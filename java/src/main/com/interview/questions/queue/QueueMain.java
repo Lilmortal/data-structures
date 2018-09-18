@@ -3,7 +3,7 @@ package com.interview.questions.queue;
 public class QueueMain {
     public static void main(String[] args) {
         System.out.println("queue");
-//        testQueue();
+        testQueue();
 
         System.out.println("linked list queue");
         testLinkedListQueue();
