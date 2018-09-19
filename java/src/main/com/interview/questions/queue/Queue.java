@@ -7,5 +7,7 @@ public interface Queue<T> {
 
     boolean isEmpty();
 
+    String getQueueUi();
+
     T peek(int pos);
 }

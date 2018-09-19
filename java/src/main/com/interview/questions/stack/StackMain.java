@@ -1,46 +1,60 @@
 package com.interview.questions.stack;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class StackMain {
+    private static final String ADD = "a";
+
+    private static final String REMOVE = "r";
+
     public static void main(String[] args) {
-        System.out.println("STACK");
-        testStack();
-        System.out.println("LINKED LIST");
-        testLinkedListStack();
+        Stack<String> stack = new StackImpl<>();
+        Stack<String> linkedListStack = new LinkedListStack<>();
 
-    }
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    private static void testStack() {
-        Stack<Integer> stack = new StackImpl();
+        String input;
 
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
+        try {
+            System.out.println("Press 'a' followed by a string to add that to the queue.");
+            System.out.println("Press 'r' to remove one item from the queue.");
 
-        System.out.println(stack.peek(1));
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
+            while (true) {
+                input = br.readLine();
 
-        stack.push(4);
+                if (!input.isEmpty()) {
+                    if (String.valueOf(input.charAt(0)).equals(ADD)) {
+                        if (input.length() <= 1) {
+                            System.out.println("Press enter a string to add into the stack.");
+                            continue;
+                        }
+                        stack.push(input.substring(1));
+                        linkedListStack.push(input.substring(1));
 
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
-    }
+                        System.out.println("Stack:");
+                        System.out.println(stack.getStackUi());
 
-    private static void testLinkedListStack() {
-        Stack<Integer> stack = new LinkedListStack();
+                        System.out.println("Linked List Stack:");
+                        System.out.println(linkedListStack.getStackUi());
+                    }
 
-        stack.push(1);
-        stack.push(2);
-        stack.push(3);
+                    if (String.valueOf(input.charAt(0)).equals(REMOVE)) {
+                        stack.pop();
+                        linkedListStack.pop();
 
-        System.out.println(stack.peek(1));
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
+                        System.out.println("Stack:");
+                        System.out.println(stack.getStackUi());
 
-        stack.push(4);
-
-        System.out.println(stack.pop());
-        System.out.println(stack.pop());
+                        System.out.println("Linked List Stack:");
+                        System.out.println(linkedListStack.getStackUi());
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 }

@@ -1,49 +1,61 @@
 package com.interview.questions.queue;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
+
 public class QueueMain {
+    private static final String ADD = "a";
+
+    private static final String REMOVE = "r";
+
+
     public static void main(String[] args) {
-        System.out.println("queue");
-        testQueue();
+        Queue<String> queue = new QueueImpl<>();
+        Queue<String> linkedListQueue = new LinkedListQueue<>();
 
-        System.out.println("linked list queue");
-        testLinkedListQueue();
-    }
+        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-    private static void testQueue() {
-        Queue<Integer> queue = new QueueImpl<>();
+        String input;
 
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+        try {
+            System.out.println("Press 'a' followed by a string to add that to the stack.");
+            System.out.println("Press 'r' to remove an item from the stack.");
 
-        System.out.println(queue.peek(1));
-        System.out.println(queue.remove());
+            while (true) {
+                input = br.readLine();
 
-        queue.add(5);
-        queue.add(6);
+                if (!input.isEmpty()) {
+                    if (String.valueOf(input.charAt(0)).equals(ADD)) {
+                        if (input.length() <= 1) {
+                            System.out.println("Press enter a string to add into the stack.");
+                            continue;
+                        }
 
-        System.out.println(queue.remove());
+                        queue.add(input.substring(1));
+                        linkedListQueue.add(input.substring(1));
 
-        queue.add(7);
-    }
+                        System.out.println("Queue:");
+                        System.out.println(queue.getQueueUi());
 
-    private static void testLinkedListQueue() {
-        Queue<Integer> queue = new LinkedListQueue<>();
+                        System.out.println("Linked List Queue:");
+                        System.out.println(linkedListQueue.getQueueUi());
+                    }
 
-        queue.add(1);
-        queue.add(2);
-        queue.add(3);
-        queue.add(4);
+                    if (String.valueOf(input.charAt(0)).equals(REMOVE)) {
+                        queue.remove();
+                        linkedListQueue.remove();
 
-        System.out.println(queue.peek(1));
-        System.out.println(queue.remove());
+                        System.out.println("Queue:");
+                        System.out.println(queue.getQueueUi());
 
-        queue.add(5);
-        queue.add(6);
-
-        System.out.println(queue.remove());
-
-        queue.add(7);
+                        System.out.println("Linked List Queue:");
+                        System.out.println(linkedListQueue.getQueueUi());
+                    }
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }

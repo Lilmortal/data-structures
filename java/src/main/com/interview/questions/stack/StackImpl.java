@@ -2,34 +2,37 @@ package com.interview.questions.stack;
 
 public class StackImpl<T> implements Stack<T> {
     // Resize capacity by this number if full
-    private static final int CAPACITY_RESIZER = 2;
+    private static final int CAPACITY_RESIZE = 2;
 
     private int capacity;
     private int head;
     private T[] stack;
-
+    private StringBuilder stackUi;
 
     public StackImpl() {
         capacity = 1;
         head = -1;
         stack = (T[])new Object[capacity];
+        stackUi = new StringBuilder(capacity);
     }
 
     @Override
     public T pop() {
         if (isEmpty()) {
-            throw new NullPointerException();
+            System.out.println("Nothing left to pop.");
+            return null;
         }
 
+        String obj = stack[head].toString();
+        updateStackUiMessage("pop", obj);
         return stack[head--];
     }
 
     @Override
     public void push(T obj) {
+        updateStackUiMessage("push", obj.toString());
         head++;
-
         doubleCapacityIfFull();
-
         stack[head] = obj;
     }
 
@@ -40,13 +43,18 @@ public class StackImpl<T> implements Stack<T> {
     }
 
     @Override
+    public String getStackUi() {
+        return stackUi.toString();
+    }
+
+    @Override
     public boolean isEmpty() {
         return head < 0;
     }
 
     private void doubleCapacityIfFull() {
         if (head >= capacity) {
-            capacity *= CAPACITY_RESIZER;
+            capacity *= CAPACITY_RESIZE;
             T[] tempStack = stack;
             stack = (T[])new Object[capacity];
             for (int i = 0; i < tempStack.length; i++) {
@@ -54,6 +62,32 @@ public class StackImpl<T> implements Stack<T> {
             }
         }
     }
+
+    private void updateStackUiMessage(String msg, String obj) {
+        switch (msg) {
+            case "pop":
+                popStackUiMessage(obj);
+                break;
+            case "push":
+                pushStackUiMessage(obj);
+                break;
+        }
+    }
+
+    private void pushStackUiMessage(String obj) {
+        if (isEmpty()) {
+            stackUi.append("|");
+        }
+
+        stackUi.append(" " + obj + " |");
+    }
+
+    private void popStackUiMessage(String obj) {
+        int objIndex = Math.abs(stackUi.indexOf(obj) - (head <= 0 ? 2 : 1));
+        stackUi.replace(objIndex, objIndex + obj.length() + (head <= 0 ? 4 : 3), "");
+    }
+
+
 }
 
 

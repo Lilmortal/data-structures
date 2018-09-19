@@ -7,6 +7,8 @@ public interface Stack<T> {
 
     T peek(int pos);
 
+    String getStackUi();
+
     boolean isEmpty();
 }
 

@@ -1,5 +1,7 @@
 package com.interview.questions.linkedList;
 
+import java.util.Objects;
+
 public class LinkedListImpl<T> implements LinkedList<T> {
 
     private Node head;
@@ -89,5 +91,21 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     @Override
     public int getSize() {
         return size;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof LinkedListImpl)) return false;
+        LinkedListImpl<?> that = (LinkedListImpl<?>) o;
+        return getSize() == that.getSize() &&
+                Objects.equals(head, that.head) &&
+                Objects.equals(tail, that.tail);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(head, tail, getSize());
     }
 }
