@@ -17,7 +17,7 @@ public class StackImpl<T> implements Stack<T> {
     }
 
     @Override
-    public T pop() {
+    public synchronized T pop() {
         if (isEmpty()) {
             System.out.println("Nothing left to pop.");
             return null;
@@ -38,17 +38,17 @@ public class StackImpl<T> implements Stack<T> {
 
 
     @Override
-    public T peek(int pos) {
+    public synchronized T peek(int pos) {
         return stack[pos];
     }
 
     @Override
-    public String getStackUi() {
+    public synchronized String getStackUi() {
         return stackUi.toString();
     }
 
     @Override
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
         return head < 0;
     }
 

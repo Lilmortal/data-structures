@@ -40,6 +40,36 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     }
 
     @Override
+    public void add(T value, int pos) {
+        Node node = new Node(value);
+        if (this.head == null) {
+            this.head = node;
+            this.tail = node;
+        } else {
+            if (pos > getSize()) {
+                System.out.println("Position " + pos + " is greater than current size which is " + getSize());
+                return;
+            }
+
+            if (pos == getSize() - 1) {
+                this.tail = node;
+            }
+
+            Node currentNode = this.head;
+            for (int i = 0; i < pos; i++) {
+                currentNode = currentNode.getNext();
+            }
+
+            node.setPrevious(currentNode.getPrevious());
+            node.setNext(currentNode);
+            currentNode.getPrevious().setNext(node);
+            currentNode.setPrevious(node);
+
+            size++;
+        }
+    }
+
+    @Override
     public void remove(T value) {
         Node currentNode = this.head;
         while(currentNode != null) {

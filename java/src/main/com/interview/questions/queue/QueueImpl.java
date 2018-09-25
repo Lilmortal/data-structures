@@ -19,7 +19,7 @@ public class QueueImpl<T> implements Queue<T> {
     }
 
     @Override
-    public T remove() {
+    public synchronized T remove() {
         if (isEmpty()) {
             System.out.println("Queue is empty.");
             return null;
@@ -47,17 +47,17 @@ public class QueueImpl<T> implements Queue<T> {
     }
 
     @Override
-    public boolean isEmpty() {
+    public synchronized boolean isEmpty() {
         return currentSize <= 0;
     }
 
     @Override
-    public T peek(int pos) {
+    public synchronized T peek(int pos) {
         return queue[pos];
     }
 
     @Override
-    public String getQueueUi() {
+    public synchronized String getQueueUi() {
         return queueUi.toString();}
 
     private boolean isFull() {

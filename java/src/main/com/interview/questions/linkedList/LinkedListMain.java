@@ -6,15 +6,10 @@ public class LinkedListMain {
 
         list.add(1);
         list.add(2);
-
-        list.getSize();
-
-        list.remove(2);
-
-        System.out.println(list.getSize() + " " + list.contains(2));
-
         list.add(3);
 
-        System.out.println(list.getSize() + " " + list.contains(2));
+        list.add(4, 1);
+
+        System.out.println(list.toString());
     }
 }
