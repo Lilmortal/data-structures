@@ -50,4 +50,5 @@ public class HashTableMain {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
 }
