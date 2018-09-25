@@ -13,7 +13,6 @@ public class StackMain {
         Stack<String> stack = new StackImpl<>();
         Stack<String> linkedListStack = new LinkedListStack<>();
 
-        java.util.Stack stackJava = new java.util.Stack();
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String input;
