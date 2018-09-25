@@ -1,9 +1,9 @@
 package com.interview.questions.sorting;
 
-public class MergeSort implements Sort {
+public class QuickSort implements Sort {
     private int[] list;
 
-    public MergeSort(int[] list) {
+    public QuickSort(int[] list) {
         this.list = list;
     }
 
