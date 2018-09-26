@@ -6,7 +6,7 @@ public class SortResource {
     private SortAlgorithm sortAlgorithm;
 
     public Integer[] getSortedUserInput(String input) {
-        Integer[] unsortedList = Arrays.stream(input.split(" ")).toArray(Integer[]::new);
+        Integer[] unsortedList = Arrays.stream(input.split(" ")).map(Integer::parseInt).toArray(Integer[]::new);
         return sortAlgorithm.sort(unsortedList);
     }
 
@@ -31,7 +31,7 @@ public class SortResource {
                 break;
             }
             default: {
-                throw new RuntimeException("Invalid input.");
+                throw new InvalidInputException("Invalid input.");
             }
         }
     }
