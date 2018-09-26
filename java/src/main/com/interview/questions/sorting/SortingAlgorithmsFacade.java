@@ -1,13 +1,17 @@
 package com.interview.questions.sorting;
 
+import com.interview.questions.Algorithms;
+import com.interview.questions.ExitException;
+import com.interview.questions.InvalidInputException;
+import com.interview.questions.algorithms.AlgorithmsFacade;
+
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.util.Arrays;
 
-public class SortingMain {
-    public static void main(String[] args) {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+public class SortingAlgorithmsFacade implements AlgorithmsFacade {
+    @Override
+    public void run(BufferedReader br) throws ExitException {
         SortResource sortResource = new SortResource();
         String input;
 
@@ -15,6 +19,10 @@ public class SortingMain {
             while (true) {
                 System.out.println("Enter a list of numbers with spaces in between, e.g. 10 20 30.");
                 input = br.readLine();
+
+                if (input.equals(Algorithms.EXIT)) {
+                    throw new ExitException();
+                }
 
                 if (Input.isValid(input)) {
                     String sortInput = null;

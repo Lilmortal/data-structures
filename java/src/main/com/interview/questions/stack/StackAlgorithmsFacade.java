@@ -1,19 +1,21 @@
 package com.interview.questions.stack;
 
+import com.interview.questions.Algorithms;
+import com.interview.questions.ExitException;
+import com.interview.questions.algorithms.AlgorithmsFacade;
+
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-public class StackMain {
+public class StackAlgorithmsFacade implements AlgorithmsFacade {
     private static final String ADD = "a";
 
     private static final String REMOVE = "r";
 
-    public static void main(String[] args) {
+    @Override
+    public void run(BufferedReader br) throws ExitException {
         Stack<String> stack = new StackImpl<>();
         Stack<String> linkedListStack = new LinkedListStack<>();
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String input;
 
@@ -25,6 +27,10 @@ public class StackMain {
                 input = br.readLine();
 
                 if (!input.isEmpty()) {
+                    if (input.equals(Algorithms.EXIT)) {
+                        throw new ExitException();
+                    }
+
                     if (String.valueOf(input.charAt(0)).equals(ADD)) {
                         if (input.length() <= 1) {
                             System.out.println("Press enter a string to add into the stack.");

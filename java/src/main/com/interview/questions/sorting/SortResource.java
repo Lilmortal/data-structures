@@ -1,5 +1,7 @@
 package com.interview.questions.sorting;
 
+import com.interview.questions.InvalidInputException;
+
 import java.util.Arrays;
 
 public class SortResource {

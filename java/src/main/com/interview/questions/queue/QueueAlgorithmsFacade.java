@@ -1,20 +1,21 @@
 package com.interview.questions.queue;
 
+import com.interview.questions.Algorithms;
+import com.interview.questions.ExitException;
+import com.interview.questions.algorithms.AlgorithmsFacade;
+
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-public class QueueMain {
+public class QueueAlgorithmsFacade implements AlgorithmsFacade {
     private static final String ADD = "a";
 
     private static final String REMOVE = "r";
 
-
-    public static void main(String[] args) {
+    @Override
+    public void run(BufferedReader br) throws ExitException {
         Queue<String> queue = new QueueImpl<>();
         Queue<String> linkedListQueue = new LinkedListQueue<>();
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String input;
 
@@ -26,6 +27,10 @@ public class QueueMain {
                 input = br.readLine();
 
                 if (!input.isEmpty()) {
+                    if (input.equals(Algorithms.EXIT)) {
+                        throw new ExitException();
+                    }
+
                     if (String.valueOf(input.charAt(0)).equals(ADD)) {
                         if (input.length() <= 1) {
                             System.out.println("Press enter a string to add into the stack.");

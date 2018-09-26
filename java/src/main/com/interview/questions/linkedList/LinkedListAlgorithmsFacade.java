@@ -1,7 +1,12 @@
 package com.interview.questions.linkedList;
 
-public class LinkedListMain {
-    public static void main(String[] args) {
+import com.interview.questions.algorithms.AlgorithmsFacade;
+
+import java.io.BufferedReader;
+
+public class LinkedListAlgorithmsFacade implements AlgorithmsFacade {
+    @Override
+    public void run(BufferedReader br) {
         LinkedList<Integer> list = new LinkedListImpl<>();
 
         list.add(1);

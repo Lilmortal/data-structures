@@ -1,20 +1,19 @@
 package com.interview.questions.hashTable;
 
 
+import com.interview.questions.algorithms.AlgorithmsFacade;
+
 import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 
-public class HashTableMain {
+public class HashTableAlgorithmsFacade implements AlgorithmsFacade {
     private static final String ADD = "a";
 
     private static final String REMOVE = "r";
 
-
-    public static void main(String[] args) {
+    @Override
+    public void run(BufferedReader br) {
         HashTable<String, String> hashTable = new HashTableImpl<>();
-
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
         String input;
 

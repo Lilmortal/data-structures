@@ -1,7 +1,11 @@
-package com.interview.questions.sorting;
+package com.interview.questions;
 
 public class InvalidInputException extends RuntimeException {
     private String error;
+
+    public InvalidInputException() {
+        super();
+    }
 
     public InvalidInputException(String error) {
         this.error = error;
