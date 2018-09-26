@@ -9,7 +9,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class SortingAlgorithmsFacade implements AlgorithmsFacade {
+public class SortingAlgorithmsFacade extends AlgorithmsFacade {
     @Override
     public void run(BufferedReader br) throws ExitException {
         SortResource sortResource = new SortResource();
@@ -18,6 +18,8 @@ public class SortingAlgorithmsFacade implements AlgorithmsFacade {
         try {
             while (true) {
                 System.out.println("Enter a list of numbers with spaces in between, e.g. 10 20 30.");
+                this.printExitInstructions();
+
                 input = br.readLine();
 
                 if (input.equals(Algorithms.EXIT)) {

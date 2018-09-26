@@ -5,7 +5,8 @@ public class InsertionSortAlgorithm implements SortAlgorithm {
     public Integer[] sort(Integer[] list) {
         for (int i = 0; i < list.length; i++) {
             for (int j = i; j >= 0; j++) {
-                if (i < j) {
+                if (j < i) {
+                    int temp = i;
 
                 }
             }

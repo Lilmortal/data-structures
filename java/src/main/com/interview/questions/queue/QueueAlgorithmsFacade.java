@@ -7,7 +7,7 @@ import com.interview.questions.algorithms.AlgorithmsFacade;
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class QueueAlgorithmsFacade implements AlgorithmsFacade {
+public class QueueAlgorithmsFacade extends AlgorithmsFacade {
     private static final String ADD = "a";
 
     private static final String REMOVE = "r";
@@ -22,6 +22,7 @@ public class QueueAlgorithmsFacade implements AlgorithmsFacade {
         try {
             System.out.println("Press 'a' followed by a string to add that to the stack.");
             System.out.println("Press 'r' to remove an item from the stack.");
+            this.printExitInstructions();
 
             while (true) {
                 input = br.readLine();

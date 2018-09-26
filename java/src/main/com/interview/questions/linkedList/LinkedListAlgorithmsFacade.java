@@ -4,7 +4,7 @@ import com.interview.questions.algorithms.AlgorithmsFacade;
 
 import java.io.BufferedReader;
 
-public class LinkedListAlgorithmsFacade implements AlgorithmsFacade {
+public class LinkedListAlgorithmsFacade extends AlgorithmsFacade {
     @Override
     public void run(BufferedReader br) {
         LinkedList<Integer> list = new LinkedListImpl<>();
