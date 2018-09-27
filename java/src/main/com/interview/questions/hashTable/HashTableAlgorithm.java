@@ -1,12 +1,12 @@
 package com.interview.questions.hashTable;
 
 
-import com.interview.questions.algorithms.AlgorithmsFacade;
+import com.interview.questions.algorithm.Algorithm;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class HashTableAlgorithmsFacade extends AlgorithmsFacade {
+public class HashTableAlgorithm extends Algorithm {
     private static final String ADD = "a";
 
     private static final String REMOVE = "r";

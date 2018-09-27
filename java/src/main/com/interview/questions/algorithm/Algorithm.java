@@ -1,13 +1,12 @@
-package com.interview.questions.algorithms;
+package com.interview.questions.algorithm;
 
-import com.interview.questions.Algorithms;
+import com.interview.questions.InterviewQuestions;
 import com.interview.questions.ExitException;
-import com.sun.tools.javah.Util;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public abstract class AlgorithmsFacade {
+public abstract class Algorithm {
     protected abstract void printInstructions();
 
     protected void printExitInstructions() {
@@ -27,7 +26,7 @@ public abstract class AlgorithmsFacade {
                 input = br.readLine();
 
                 if (!input.isEmpty()) {
-                    if (input.equals(Algorithms.EXIT)) {
+                    if (input.equals(InterviewQuestions.EXIT)) {
                         throw new ExitException();
                     }
                     execute(input, br);
@@ -39,6 +38,4 @@ public abstract class AlgorithmsFacade {
             throw new RuntimeException(e);
         }
     }
-
-
 }

@@ -1,6 +1,6 @@
 package com.interview.questions.sorting;
 
-public class MergeSortAlgorithm implements SortAlgorithm {
+public class MergeSort implements Sort {
     @Override
     public Double[] sort(Double[] list) {
         int half = list.length / 2;

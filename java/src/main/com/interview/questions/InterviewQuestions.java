@@ -1,13 +1,13 @@
 package com.interview.questions;
 
-import com.interview.questions.algorithms.AlgorithmsFacade;
-import com.interview.questions.algorithms.AlgorithmsResource;
+import com.interview.questions.algorithm.Algorithm;
+import com.interview.questions.algorithm.AlgorithmResource;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class Algorithms {
+public class InterviewQuestions {
     public static final String EXIT = "exit";
 
     public static void main(String[] args) {
@@ -16,8 +16,8 @@ public class Algorithms {
         printIntro();
 
         String input = null;
-        AlgorithmsResource resource = new AlgorithmsResource();
-        AlgorithmsFacade facade = null;
+        AlgorithmResource resource = new AlgorithmResource();
+        Algorithm facade = null;
 
         while (true) {
             try {

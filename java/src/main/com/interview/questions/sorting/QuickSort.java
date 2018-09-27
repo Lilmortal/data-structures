@@ -1,6 +1,6 @@
 package com.interview.questions.sorting;
 
-public class QuickSortAlgorithm implements SortAlgorithm {
+public class QuickSort implements Sort {
     @Override
     public Double[] sort(Double[] list) {
         return new Double[0];

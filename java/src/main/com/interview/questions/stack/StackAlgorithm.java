@@ -1,13 +1,12 @@
 package com.interview.questions.stack;
 
-import com.interview.questions.Algorithms;
 import com.interview.questions.ExitException;
-import com.interview.questions.algorithms.AlgorithmsFacade;
+import com.interview.questions.algorithm.Algorithm;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class StackAlgorithmsFacade extends AlgorithmsFacade {
+public class StackAlgorithm extends Algorithm {
     private static final String ADD = "a";
 
     private static final String REMOVE = "r";

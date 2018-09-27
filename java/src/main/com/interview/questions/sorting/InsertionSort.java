@@ -1,6 +1,6 @@
 package com.interview.questions.sorting;
 
-public class InsertionSortAlgorithm implements SortAlgorithm {
+public class InsertionSort implements Sort {
     @Override
     public Double[] sort(Double[] list) {
         Double[] sortedList = list;

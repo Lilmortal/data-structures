@@ -1,12 +1,12 @@
 package com.interview.questions.linkedList;
 
 import com.interview.questions.ExitException;
-import com.interview.questions.algorithms.AlgorithmsFacade;
+import com.interview.questions.algorithm.Algorithm;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 
-public class LinkedListAlgorithmsFacade extends AlgorithmsFacade {
+public class LinkedListAlgorithm extends Algorithm {
     private static final String ADD = "a";
 
     private static final String REMOVE = "r";

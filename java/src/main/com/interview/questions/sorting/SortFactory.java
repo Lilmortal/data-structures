@@ -1,16 +1,16 @@
 package com.interview.questions.sorting;
 
-public class SortAlgorithmFactory {
-    public SortAlgorithm getSort(String sort) {
+public class SortFactory {
+    public Sort getSort(String sort) {
         switch (sort) {
             case "insertion": {
-                return new InsertionSortAlgorithm();
+                return new InsertionSort();
             }
             case "merge": {
-                return new MergeSortAlgorithm();
+                return new MergeSort();
             }
             case "quick": {
-                return new QuickSortAlgorithm();
+                return new QuickSort();
             }
         }
         return null;
