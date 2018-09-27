@@ -15,9 +15,9 @@ public class InterviewQuestions {
 
         printIntro();
 
-        String input = null;
+        String input;
         AlgorithmResource resource = new AlgorithmResource();
-        Algorithm facade = null;
+        Algorithm algorithm;
 
         while (true) {
             try {
@@ -25,15 +25,15 @@ public class InterviewQuestions {
 
                 if (!input.isEmpty()) {
                     try {
-                        facade = resource.getFacade(input);
+                        algorithm = resource.getFacade(input);
                     } catch (InvalidInputException e) {
                         System.out.println("Input is invalid. Please enter a valid input.");
                         continue;
                     }
 
-                    if (facade != null) {
+                    if (algorithm != null) {
                         try {
-                            facade.run(br);
+                            algorithm.run(br);
                         } catch (ExitException e) {
                             printIntro();
                         }

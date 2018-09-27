@@ -7,6 +7,8 @@ public interface LinkedList<T> {
 
     void remove(T value);
 
+    void remove(int pos);
+
     boolean contains(T value);
 
     Node getFirstNode();
@@ -14,4 +16,6 @@ public interface LinkedList<T> {
     Node getLastNode();
 
     int getSize();
+
+    String getLinkedListUi();
 }

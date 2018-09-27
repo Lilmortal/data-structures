@@ -1,4 +1,4 @@
-package com.interview.questions.sorting;
+package com.interview.questions.sort;
 
 import com.interview.questions.ExitException;
 import com.interview.questions.InvalidInputException;

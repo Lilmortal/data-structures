@@ -5,7 +5,7 @@ import com.interview.questions.InvalidInputException;
 import com.interview.questions.hashTable.HashTableAlgorithm;
 import com.interview.questions.linkedList.LinkedListAlgorithm;
 import com.interview.questions.queue.QueueAlgorithm;
-import com.interview.questions.sorting.SortAlgorithm;
+import com.interview.questions.sort.SortAlgorithm;
 import com.interview.questions.stack.StackAlgorithm;
 
 public class AlgorithmFactory {

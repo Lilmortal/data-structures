@@ -1,12 +1,11 @@
-package com.interview.questions.sorting;
+package com.interview.questions.sort;
 
 public class MergeSort implements Sort {
     @Override
     public Double[] sort(Double[] list) {
         int half = list.length / 2;
 
-//        sort(0, half);
-//        sort(half + 1, list.length);
+//        sort()
         return list;
     }
 

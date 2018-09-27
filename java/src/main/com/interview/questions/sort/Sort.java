@@ -1,4 +1,4 @@
-package com.interview.questions.sorting;
+package com.interview.questions.sort;
 
 public interface Sort {
     Double[] sort(Double[] list);

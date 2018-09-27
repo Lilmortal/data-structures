@@ -1,4 +1,4 @@
-package com.interview.questions.sorting;
+package com.interview.questions.sort;
 
 public class Input {
     private final static String VALID_INPUT_REGEX = "(-?\\d(\\.\\d+)?\\s?)+$";
