@@ -2,17 +2,20 @@ package com.interview.questions.sorting;
 
 public class InsertionSortAlgorithm implements SortAlgorithm {
     @Override
-    public Integer[] sort(Integer[] list) {
-        for (int i = 0; i < list.length; i++) {
-            for (int j = i; j >= 0; j++) {
-                if (j < i) {
-                    int temp = i;
+    public Double[] sort(Double[] list) {
+        Double[] sortedList = list;
 
+        for (int i = 0; i < list.length; i++) {
+            for (int j = i; j > 0; j--) {
+                if (sortedList[j] < sortedList[j - 1]) {
+                    Double temp = sortedList[j - 1];
+                    sortedList[j - 1] = sortedList[j];
+                    sortedList[j] = temp;
                 }
             }
         }
 
-        return null;
+        return sortedList;
     }
 
     @Override

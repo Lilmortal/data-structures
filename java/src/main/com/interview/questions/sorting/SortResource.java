@@ -7,8 +7,8 @@ import java.util.Arrays;
 public class SortResource {
     private SortAlgorithm sortAlgorithm;
 
-    public Integer[] getSortedUserInput(String input) {
-        Integer[] unsortedList = Arrays.stream(input.split(" ")).map(Integer::parseInt).toArray(Integer[]::new);
+    public Double[] getSortedUserInput(String input) {
+        Double[] unsortedList = Arrays.stream(input.split(" ")).map(Double::parseDouble).toArray(Double[]::new);
         return sortAlgorithm.sort(unsortedList);
     }
 

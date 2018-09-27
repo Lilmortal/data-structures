@@ -11,7 +11,7 @@ import com.interview.questions.stack.StackAlgorithmsFacade;
 public class AlgorithmsFactory {
 
     public AlgorithmsFacade getAlgorithms(String algorithms) {
-        AlgorithmsFacade algorithmsFacade = null;
+        AlgorithmsFacade algorithmsFacade;
 
         switch (algorithms) {
             case "linked list": {

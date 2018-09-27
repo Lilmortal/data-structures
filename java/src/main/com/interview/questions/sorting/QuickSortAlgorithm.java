@@ -2,8 +2,8 @@ package com.interview.questions.sorting;
 
 public class QuickSortAlgorithm implements SortAlgorithm {
     @Override
-    public Integer[] sort(Integer[] list) {
-        return new Integer[0];
+    public Double[] sort(Double[] list) {
+        return new Double[0];
     }
 
     @Override

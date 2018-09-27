@@ -12,43 +12,39 @@ public class HashTableAlgorithmsFacade extends AlgorithmsFacade {
     private static final String REMOVE = "r";
 
     @Override
-    public void run(BufferedReader br) {
+    protected void printInstructions() {
+        System.out.println("Press 'a' followed by a string to add that to the hash table.");
+        System.out.println("Press 'r' to remove an item from the hash table.");
+    }
+
+    @Override
+    public void execute(String input, BufferedReader br) throws IOException {
         HashTable<String, String> hashTable = new HashTableImpl<>();
 
-        String input;
+        while (true) {
+            input = br.readLine();
 
-        try {
-            System.out.println("Press 'a' followed by a string to add that to the hash table.");
-            System.out.println("Press 'r' to remove an item from the hash table.");
-            this.printExitInstructions();
-
-            while (true) {
-                input = br.readLine();
-
-                if (!input.isEmpty()) {
-                    if (String.valueOf(input.charAt(0)).equals(ADD)) {
-                        if (input.length() <= 1) {
-                            System.out.println("Press enter a string to add into the hash table.");
-                            continue;
-                        }
-
-                        hashTable.add(input.substring(1), "");
-
-                        System.out.println("Hash Table:");
-                        System.out.println(hashTable);
-
+            if (!input.isEmpty()) {
+                if (String.valueOf(input.charAt(0)).equals(ADD)) {
+                    if (input.length() <= 1) {
+                        System.out.println("Press enter a string to add into the hash table.");
+                        continue;
                     }
 
-                    if (String.valueOf(input.charAt(0)).equals(REMOVE)) {
-                        hashTable.remove("");
+                    hashTable.add(input.substring(1), "");
 
-                        System.out.println("Hash Table:");
-                        System.out.println(hashTable);
-                    }
+                    System.out.println("Hash Table:");
+                    System.out.println(hashTable);
+
+                }
+
+                if (String.valueOf(input.charAt(0)).equals(REMOVE)) {
+                    hashTable.remove("");
+
+                    System.out.println("Hash Table:");
+                    System.out.println(hashTable);
                 }
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 }

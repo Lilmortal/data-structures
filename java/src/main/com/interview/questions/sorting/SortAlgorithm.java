@@ -1,7 +1,7 @@
 package com.interview.questions.sorting;
 
 public interface SortAlgorithm {
-    Integer[] sort(Integer[] list);
+    Double[] sort(Double[] list);
 
     String getName();
 }
