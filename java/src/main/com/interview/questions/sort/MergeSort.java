@@ -5,7 +5,9 @@ public class MergeSort implements Sort {
     public Double[] sort(Double[] list) {
         int half = list.length / 2;
 
-//        sort()
+        mergeSort(0, half);
+        mergeSort(half + 1, list.length);
+
         return list;
     }
 
@@ -14,5 +16,20 @@ public class MergeSort implements Sort {
         return "Merge sort";
     }
 
+    private void mergeSort(int start, int end) {
+        if (start > end) {
+            merge(start, end);
+        }
 
+        int half = end - start;
+
+        mergeSort(start, half);
+        mergeSort(half + 1, end);
+    }
+
+    private void merge(int start, int end) {
+        if (start < end) {
+
+        }
+    }
 }

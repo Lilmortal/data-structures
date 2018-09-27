@@ -25,7 +25,7 @@ public class InterviewQuestions {
 
                 if (!input.isEmpty()) {
                     try {
-                        algorithm = resource.getFacade(input);
+                        algorithm = resource.getAlgorithm(input);
                     } catch (InvalidInputException e) {
                         System.out.println("Input is invalid. Please enter a valid input.");
                         continue;
@@ -53,7 +53,7 @@ public class InterviewQuestions {
         System.out.println("1. Linked List");
         System.out.println("2. Queue");
         System.out.println("3. Stack");
-        System.out.println("4. Hash Table");
+        System.out.println("4. Hash Table (IN PROGRESS)");
         System.out.println("5. Sorting");
     }
 }

@@ -3,7 +3,7 @@ package com.interview.questions.algorithm;
 import com.interview.questions.InvalidInputException;
 
 public class AlgorithmResource {
-    public Algorithm getFacade(String input) {
+    public Algorithm getAlgorithm(String input) {
         AlgorithmFactory algorithmFactory = new AlgorithmFactory();
         Algorithm algorithm = null;
 
