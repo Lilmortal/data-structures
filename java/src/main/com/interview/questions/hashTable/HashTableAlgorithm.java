@@ -31,7 +31,7 @@ public class HashTableAlgorithm extends Algorithm {
                         continue;
                     }
 
-                    hashTable.add(input.substring(1), "");
+                    hashTable.put(input.substring(1), "");
 
                     System.out.println("Hash Table:");
                     System.out.println(hashTable);

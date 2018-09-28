@@ -1,11 +1,23 @@
 package com.interview.questions.hashTable;
 
+import com.interview.questions.linkedList.LinkedList;
+
+import java.util.List;
+
 public interface HashTable<K, V> {
-    void add(K key, V value);
+    LinkedList<V> get(K key);
+
+    void put(K key, V value);
 
     void remove(K key);
 
-    void remove(K key, V value);
+    boolean containsKey(K key);
 
-    void peek(K key);
+    boolean containsValue(V value);
+
+    List<V> getAllValues();
+
+    int getSize();
+
+    boolean isEmpty();
 }

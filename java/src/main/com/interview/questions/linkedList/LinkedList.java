@@ -9,6 +9,10 @@ public interface LinkedList<T> {
 
     void remove(int pos);
 
+    void clear();
+
+    T get(int pos);
+
     boolean contains(T value);
 
     Node getFirstNode();

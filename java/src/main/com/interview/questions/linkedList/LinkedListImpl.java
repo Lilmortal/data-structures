@@ -100,6 +100,23 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     }
 
     @Override
+    public void clear() {
+        Node currentNode = this.head;
+        currentNode.setPrevious(null);
+        currentNode.setNext(null);
+        currentNode.setValue(null);
+    }
+
+    @Override
+    public T get(int pos) {
+        Node currentNode = this.head;
+        for (int i = 0; i < pos; i++) {
+            currentNode = currentNode.getNext();
+        }
+        return (T) currentNode.getValue();
+    }
+
+    @Override
     public boolean contains(T value) {
         Node currentNode = this.head;
         while(currentNode != null) {
