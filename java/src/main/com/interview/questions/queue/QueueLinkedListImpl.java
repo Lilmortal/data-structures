@@ -6,15 +6,14 @@ import com.interview.questions.linkedList.Node;
 
 import java.util.Objects;
 
-public class LinkedListQueue<T> implements Queue<T> {
+public class QueueLinkedListImpl<T> implements Queue<T> {
     private LinkedList<T> list;
     private StringBuilder queueUi;
 
-    public LinkedListQueue() {
+    public QueueLinkedListImpl() {
         list = new LinkedListImpl<>();
         queueUi = new StringBuilder();
     }
-
 
     @Override
     public T remove() {

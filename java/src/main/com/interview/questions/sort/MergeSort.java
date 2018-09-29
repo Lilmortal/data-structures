@@ -5,9 +5,8 @@ import java.util.Arrays;
 public class MergeSort implements Sort {
     @Override
     public Double[] sort(Double[] list) {
-        int half = list.length / 2;
-
         if (list.length > 1) {
+            int half = list.length / 2;
             Double[] left = sort(Arrays.copyOfRange(list, 0, half));
             Double[] right = sort(Arrays.copyOfRange(list, half, list.length));
 

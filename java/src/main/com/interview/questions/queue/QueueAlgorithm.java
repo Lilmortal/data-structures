@@ -13,7 +13,7 @@ public class QueueAlgorithm extends Algorithm {
 
     private Queue<String> queue = new QueueImpl<>();
 
-    private Queue<String> linkedListQueue = new LinkedListQueue<>();
+    private Queue<String> linkedListQueue = new QueueLinkedListImpl<>();
 
     @Override
     protected void printInstructions() {

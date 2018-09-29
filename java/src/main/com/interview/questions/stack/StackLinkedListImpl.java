@@ -4,11 +4,11 @@ import com.interview.questions.linkedList.LinkedList;
 import com.interview.questions.linkedList.LinkedListImpl;
 import com.interview.questions.linkedList.Node;
 
-public class LinkedListStack<T> implements Stack<T> {
+public class StackLinkedListImpl<T> implements Stack<T> {
     private LinkedList<T> list;
     private StringBuilder stackUi;
 
-    public LinkedListStack() {
+    public StackLinkedListImpl() {
         this.list = new LinkedListImpl();
         stackUi = new StringBuilder();
     }
@@ -16,6 +16,7 @@ public class LinkedListStack<T> implements Stack<T> {
     @Override
     public T pop() {
         if (this.list.getSize() == 0) {
+            // TODO: Throw exception instead of sout
             System.out.println("Nothing left to pop in linked list stack.");
             return null;
         }

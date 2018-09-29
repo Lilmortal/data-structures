@@ -13,7 +13,7 @@ public class StackAlgorithm extends Algorithm {
 
     private Stack<String> stack = new StackImpl<>();
 
-    private Stack<String> linkedListStack = new LinkedListStack<>();
+    private Stack<String> linkedListStack = new StackLinkedListImpl<>();
     @Override
     protected void printInstructions() {
         System.out.println("Press 'a' followed by a string to add that to the queue.");
