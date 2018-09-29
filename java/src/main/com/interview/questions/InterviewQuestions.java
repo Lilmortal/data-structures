@@ -6,6 +6,7 @@ import com.interview.questions.algorithm.AlgorithmResource;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Objects;
 
 public class InterviewQuestions {
     public static final String EXIT = "exit";
@@ -31,7 +32,7 @@ public class InterviewQuestions {
                         continue;
                     }
 
-                    if (algorithm != null) {
+                    if (!Objects.isNull(algorithm)) {
                         try {
                             algorithm.run(br);
                         } catch (ExitException e) {

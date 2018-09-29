@@ -30,7 +30,7 @@ public class Node<T> {
     }
 
     public boolean hasNext() {
-        return next != null;
+        return !Objects.isNull(next);
     }
 
     public T getValue() {

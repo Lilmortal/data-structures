@@ -1,5 +1,7 @@
 package com.interview.questions.queue;
 
+import java.util.Objects;
+
 // Implemention of the circular queue
 public class QueueImpl<T> implements Queue<T> {
     private int maxSize;
@@ -28,7 +30,7 @@ public class QueueImpl<T> implements Queue<T> {
         tail = (tail + 1) % maxSize;
         currentSize--;
 
-        if (queue[tail] != null) {
+        if (!Objects.isNull(queue[tail])) {
             updateQueueUiMessage("remove", queue[tail].toString());
         }
         return queue[tail];

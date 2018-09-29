@@ -7,6 +7,7 @@ import com.interview.questions.algorithm.Algorithm;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 
 public class SortAlgorithm extends Algorithm {
     private SortResource sortResource = new SortResource();
@@ -20,7 +21,7 @@ public class SortAlgorithm extends Algorithm {
     public void execute(String input, BufferedReader br) throws ExitException, IOException {
         if (Input.isValid(input)) {
             String sortInput = null;
-            while (sortInput == null) {
+            while (Objects.isNull(sortInput)) {
                 System.out.println();
                 System.out.println("Which sorting algorithm you want to test, type the number:");
                 System.out.println("1. Insertion Sort");

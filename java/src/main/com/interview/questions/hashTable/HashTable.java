@@ -1,11 +1,9 @@
 package com.interview.questions.hashTable;
 
-import com.interview.questions.linkedList.LinkedList;
-
 import java.util.List;
 
 public interface HashTable<K, V> {
-    LinkedList<V> get(K key);
+    V get(K key);
 
     void put(K key, V value);
 
@@ -15,7 +13,7 @@ public interface HashTable<K, V> {
 
     boolean containsValue(V value);
 
-    List<V> getAllValues();
+    List<HashTableMap<K, V>> getAllValues();
 
     int getSize();
 

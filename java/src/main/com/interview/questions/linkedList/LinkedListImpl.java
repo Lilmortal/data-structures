@@ -3,6 +3,9 @@ package com.interview.questions.linkedList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
+import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class LinkedListImpl<T> implements LinkedList<T> {
     private Node head;
@@ -15,7 +18,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     }
 
     public LinkedListImpl(T value) {
-        if (value != null) {
+        if (!Objects.isNull(value)) {
             Node node = new Node(value);
             this.head = node;
             this.tail = node;
@@ -25,11 +28,19 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         }
     }
 
+    @Override
+    public void forEach(Predicate<T> predicate) {
+        Node currentNode = this.head;
+        while(currentNode.hasNext()) {
+            predicate.test((T) currentNode.getValue());
+            currentNode = currentNode.getNext();
+        }
+    }
 
     @Override
     public void add(T value) {
         Node node = new Node(value);
-        if (this.head == null) {
+        if (Objects.isNull(this.head)) {
             this.head = node;
             this.tail = node;
         } else {
@@ -45,7 +56,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     @Override
     public void add(T value, int pos) {
         Node node = new Node(value);
-        if (this.head == null) {
+        if (Objects.isNull(this.head)) {
             this.head = node;
             this.tail = node;
         } else {
@@ -76,7 +87,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     @Override
     public void remove(T value) {
         Node currentNode = this.head;
-        while(currentNode != null) {
+        while(!Objects.isNull(currentNode)) {
             if (currentNode.getValue().equals(value)) {
                 removeNode(currentNode);
 
@@ -119,7 +130,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     @Override
     public boolean contains(T value) {
         Node currentNode = this.head;
-        while(currentNode != null) {
+        while(!Objects.isNull(currentNode)) {
             if (currentNode.getValue().equals(value)) {
                 return true;
             }
@@ -168,7 +179,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         Node previousNode = node.getPrevious();
         Node nextNode = node.getNext();
 
-        if (previousNode != null) {
+        if (!Objects.isNull(previousNode)) {
             previousNode.setNext(nextNode);
         }
 

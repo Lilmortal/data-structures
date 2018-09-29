@@ -4,6 +4,8 @@ import com.interview.questions.linkedList.LinkedList;
 import com.interview.questions.linkedList.LinkedListImpl;
 import com.interview.questions.linkedList.Node;
 
+import java.util.Objects;
+
 public class LinkedListQueue<T> implements Queue<T> {
     private LinkedList<T> list;
     private StringBuilder queueUi;
@@ -16,7 +18,7 @@ public class LinkedListQueue<T> implements Queue<T> {
 
     @Override
     public T remove() {
-        if (this.list.getFirstNode() == null) {
+        if (Objects.isNull(this.list.getFirstNode())) {
             System.out.println("Linked list queue is empty.");
             return null;
         }
