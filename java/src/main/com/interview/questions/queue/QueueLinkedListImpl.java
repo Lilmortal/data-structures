@@ -2,7 +2,7 @@ package com.interview.questions.queue;
 
 import com.interview.questions.linkedList.LinkedList;
 import com.interview.questions.linkedList.LinkedListImpl;
-import com.interview.questions.linkedList.Node;
+import com.interview.questions.linkedList.LinkedListNode;
 
 import java.util.Objects;
 
@@ -48,11 +48,11 @@ public class QueueLinkedListImpl<T> implements Queue<T> {
 
     @Override
     public T peek(int pos) {
-        Node currentNode = this.list.getFirstNode();
+        LinkedListNode currentLinkedListNode = this.list.getFirstNode();
         for (int i = 0; i < pos; i++) {
-            currentNode = currentNode.getNext();
+            currentLinkedListNode = currentLinkedListNode.getNext();
         }
-        return (T) currentNode.getValue();
+        return (T) currentLinkedListNode.getValue();
     }
 
     private void updateQueueUiMessage(String msg, String obj) {

@@ -1,8 +1,6 @@
 package com.interview.questions.linkedList;
 
-import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 public interface LinkedList<T> {
     void forEach(Predicate<T> consumer);
@@ -21,9 +19,9 @@ public interface LinkedList<T> {
 
     boolean contains(T value);
 
-    Node getFirstNode();
+    LinkedListNode getFirstNode();
 
-    Node getLastNode();
+    LinkedListNode getLastNode();
 
     int getSize();
 

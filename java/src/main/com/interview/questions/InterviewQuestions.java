@@ -56,5 +56,7 @@ public class InterviewQuestions {
         System.out.println("3. Stack");
         System.out.println("4. Hash Table (IN PROGRESS)");
         System.out.println("5. Sorting");
+        System.out.println("6. Trees (IN PROGRESS)");
+        System.out.println("7. Graphs (IN PROGRESS)");
     }
 }

@@ -8,8 +8,8 @@ public class QuickSort implements Sort {
     // 5. If both left index and right index stayed, swap them
     // 6. If left index position is equal or over right index, end swapping
     // 7. Swap pivot with left index position
-    // 7. From the pivot current position, split into two sorts, the left side, and the right side excluding the pivot, and repeat
-    // 8. Return if left index is greater than or equal to right index as that means there is only one or less element, which by itself is sorted.
+    // 8. From the pivot current position, split into two sorts, the left side, and the right side excluding the pivot, and repeat
+    // 9. Return if left index is greater than or equal to right index as that means there is only one or less element, which by itself is sorted.
 
     // e.g. 9 12 9 2 17 1 6
     // Swap 1 with 9

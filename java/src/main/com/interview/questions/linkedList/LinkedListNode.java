@@ -2,30 +2,30 @@ package com.interview.questions.linkedList;
 
 import java.util.Objects;
 
-public class Node<T> {
-    private Node previous;
+public class LinkedListNode<T> {
+    private LinkedListNode previous;
 
-    private Node next;
+    private LinkedListNode next;
 
     private T value;
 
-    public Node(T value) {
+    public LinkedListNode(T value) {
         this.value = value;
     }
 
-    public Node getPrevious() {
+    public LinkedListNode getPrevious() {
         return previous;
     }
 
-    public void setPrevious(Node previous) {
+    public void setPrevious(LinkedListNode previous) {
         this.previous = previous;
     }
 
-    public Node getNext() {
+    public LinkedListNode getNext() {
         return next;
     }
 
-    public void setNext(Node next) {
+    public void setNext(LinkedListNode next) {
         this.next = next;
     }
 

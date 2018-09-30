@@ -3,13 +3,11 @@ package com.interview.questions.linkedList;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.function.Consumer;
 import java.util.function.Predicate;
-import java.util.function.Supplier;
 
 public class LinkedListImpl<T> implements LinkedList<T> {
-    private Node head;
-    private Node tail;
+    private LinkedListNode head;
+    private LinkedListNode tail;
     private int size;
     private List<String> linkedListUi = new ArrayList<>();
 
@@ -19,9 +17,9 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
     public LinkedListImpl(T value) {
         if (!Objects.isNull(value)) {
-            Node node = new Node(value);
-            this.head = node;
-            this.tail = node;
+            LinkedListNode linkedListNode = new LinkedListNode(value);
+            this.head = linkedListNode;
+            this.tail = linkedListNode;
             size = 1;
         } else {
             size = 0;
@@ -30,23 +28,23 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
     @Override
     public void forEach(Predicate<T> predicate) {
-        Node currentNode = this.head;
-        while(currentNode.hasNext()) {
-            predicate.test((T) currentNode.getValue());
-            currentNode = currentNode.getNext();
+        LinkedListNode currentLinkedListNode = this.head;
+        while(currentLinkedListNode.hasNext()) {
+            predicate.test((T) currentLinkedListNode.getValue());
+            currentLinkedListNode = currentLinkedListNode.getNext();
         }
     }
 
     @Override
     public void add(T value) {
-        Node node = new Node(value);
+        LinkedListNode linkedListNode = new LinkedListNode(value);
         if (Objects.isNull(this.head)) {
-            this.head = node;
-            this.tail = node;
+            this.head = linkedListNode;
+            this.tail = linkedListNode;
         } else {
-            node.setPrevious(this.tail);
-            this.tail.setNext(node);
-            this.tail = node;
+            linkedListNode.setPrevious(this.tail);
+            this.tail.setNext(linkedListNode);
+            this.tail = linkedListNode;
         }
 
         linkedListUi.add(value.toString());
@@ -55,10 +53,10 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
     @Override
     public void add(T value, int pos) {
-        Node node = new Node(value);
+        LinkedListNode linkedListNode = new LinkedListNode(value);
         if (Objects.isNull(this.head)) {
-            this.head = node;
-            this.tail = node;
+            this.head = linkedListNode;
+            this.tail = linkedListNode;
         } else {
             if (pos > getSize()) {
                 System.out.println("-- Position " + pos + " is greater than current size which is " + getSize() + " --");
@@ -66,18 +64,18 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             }
 
             if (pos == getSize() - 1) {
-                this.tail = node;
+                this.tail = linkedListNode;
             }
 
-            Node currentNode = this.head;
+            LinkedListNode currentLinkedListNode = this.head;
             for (int i = 0; i < pos; i++) {
-                currentNode = currentNode.getNext();
+                currentLinkedListNode = currentLinkedListNode.getNext();
             }
 
-            node.setPrevious(currentNode.getPrevious());
-            node.setNext(currentNode);
-            currentNode.getPrevious().setNext(node);
-            currentNode.setPrevious(node);
+            linkedListNode.setPrevious(currentLinkedListNode.getPrevious());
+            linkedListNode.setNext(currentLinkedListNode);
+            currentLinkedListNode.getPrevious().setNext(linkedListNode);
+            currentLinkedListNode.setPrevious(linkedListNode);
 
             linkedListUi.add(pos, value.toString());
             size++;
@@ -86,66 +84,66 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
     @Override
     public void remove(T value) {
-        Node currentNode = this.head;
-        while(!Objects.isNull(currentNode)) {
-            if (currentNode.getValue().equals(value)) {
-                removeNode(currentNode);
+        LinkedListNode currentLinkedListNode = this.head;
+        while(!Objects.isNull(currentLinkedListNode)) {
+            if (currentLinkedListNode.getValue().equals(value)) {
+                removeNode(currentLinkedListNode);
 
                 linkedListUi.remove(value.toString());
                 break;
             }
 
-            currentNode = currentNode.getNext();
+            currentLinkedListNode = currentLinkedListNode.getNext();
         }
     }
 
     @Override
     public void remove(int pos) {
-        Node currentNode = this.head;
+        LinkedListNode currentLinkedListNode = this.head;
 
         for (int i = 0; i < pos; i++) {
-            currentNode = currentNode.getNext();
+            currentLinkedListNode = currentLinkedListNode.getNext();
         }
-        removeNode(currentNode);
+        removeNode(currentLinkedListNode);
         linkedListUi.remove(pos);
     }
 
     @Override
     public void clear() {
-        Node currentNode = this.head;
-        currentNode.setPrevious(null);
-        currentNode.setNext(null);
-        currentNode.setValue(null);
+        LinkedListNode currentLinkedListNode = this.head;
+        currentLinkedListNode.setPrevious(null);
+        currentLinkedListNode.setNext(null);
+        currentLinkedListNode.setValue(null);
     }
 
     @Override
     public T get(int pos) {
-        Node currentNode = this.head;
+        LinkedListNode currentLinkedListNode = this.head;
         for (int i = 0; i < pos; i++) {
-            currentNode = currentNode.getNext();
+            currentLinkedListNode = currentLinkedListNode.getNext();
         }
-        return (T) currentNode.getValue();
+        return (T) currentLinkedListNode.getValue();
     }
 
     @Override
     public boolean contains(T value) {
-        Node currentNode = this.head;
-        while(!Objects.isNull(currentNode)) {
-            if (currentNode.getValue().equals(value)) {
+        LinkedListNode currentLinkedListNode = this.head;
+        while(!Objects.isNull(currentLinkedListNode)) {
+            if (currentLinkedListNode.getValue().equals(value)) {
                 return true;
             }
-            currentNode = currentNode.getNext();
+            currentLinkedListNode = currentLinkedListNode.getNext();
         }
         return false;
     }
 
     @Override
-    public Node getFirstNode() {
+    public LinkedListNode getFirstNode() {
         return this.head;
     }
 
     @Override
-    public Node getLastNode() {
+    public LinkedListNode getLastNode() {
         return this.tail;
     }
 
@@ -175,20 +173,20 @@ public class LinkedListImpl<T> implements LinkedList<T> {
         return Objects.hash(head, tail, getSize());
     }
 
-    private void removeNode(Node node) {
-        Node previousNode = node.getPrevious();
-        Node nextNode = node.getNext();
+    private void removeNode(LinkedListNode linkedListNode) {
+        LinkedListNode previousLinkedListNode = linkedListNode.getPrevious();
+        LinkedListNode nextLinkedListNode = linkedListNode.getNext();
 
-        if (!Objects.isNull(previousNode)) {
-            previousNode.setNext(nextNode);
+        if (!Objects.isNull(previousLinkedListNode)) {
+            previousLinkedListNode.setNext(nextLinkedListNode);
         }
 
-        if (node.equals(this.head)) {
-            this.head = nextNode;
+        if (linkedListNode.equals(this.head)) {
+            this.head = nextLinkedListNode;
         }
 
-        if (this.tail.equals(node)) {
-            this.tail = previousNode;
+        if (this.tail.equals(linkedListNode)) {
+            this.tail = previousLinkedListNode;
         }
         size--;
     }

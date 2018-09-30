@@ -2,7 +2,7 @@ package com.interview.questions.stack;
 
 import com.interview.questions.linkedList.LinkedList;
 import com.interview.questions.linkedList.LinkedListImpl;
-import com.interview.questions.linkedList.Node;
+import com.interview.questions.linkedList.LinkedListNode;
 
 public class StackLinkedListImpl<T> implements Stack<T> {
     private LinkedList<T> list;
@@ -37,11 +37,11 @@ public class StackLinkedListImpl<T> implements Stack<T> {
 
     @Override
     public T peek(int pos) {
-        Node currentNode = this.list.getFirstNode();
+        LinkedListNode currentLinkedListNode = this.list.getFirstNode();
         for (int i = 0; i < pos; i++) {
-            currentNode = currentNode.getNext();
+            currentLinkedListNode = currentLinkedListNode.getNext();
         }
-        return (T) currentNode.getValue();
+        return (T) currentLinkedListNode.getValue();
     }
 
     @Override
