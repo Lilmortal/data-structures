@@ -40,8 +40,7 @@ public class SortAlgorithm extends Algorithm {
                     System.out.println("That is the wrong input.");
                     sortInput = null;
                 } catch (Exception e) {
-                    System.out.println(e.getMessage());
-                    System.exit(1);
+                    System.out.println(e);
                 }
             }
         } else {
