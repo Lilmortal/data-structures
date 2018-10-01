@@ -4,7 +4,9 @@ import com.interview.questions.linkedList.LinkedList;
 import com.interview.questions.linkedList.LinkedListImpl;
 
 import java.util.*;
+import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class HashTableImpl<K, V> implements HashTable<K, V> {
     private static int MAX_SIZE = 20;
@@ -57,15 +59,18 @@ public class HashTableImpl<K, V> implements HashTable<K, V> {
 
     @Override
     public boolean containsValue(V value) {
-        return true;
-//        return keys.stream().anyMatch(key -> this.table[Integer.parseInt(key.toString())].stream().(m -> m.getValue().equals(value)));
+
+        return Arrays.stream(this.table)
+                .flatMap(l -> l.stream())
+                .anyMatch(m -> m.getValue().equals(value));
     }
 
     @Override
     public List<HashTableMap<K, V>> getAllValues() {
-        List<HashTableMap<K, V>> tuple = new ArrayList<>();
-//        keys.stream().sequential().map(key -> this.table[Integer.parseInt(key.toString())].get(0).getValue()).collect(Collectors.toCollection(() -> tuple));
-        return tuple;
+        return Arrays.stream(this.table)
+                .flatMap(l -> l.stream())
+                .map(e -> e.getValue())
+                .collect()
     }
 
     @Override

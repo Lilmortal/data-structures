@@ -12,7 +12,7 @@ public class HeapNode<T> implements Heap<T> {
 
     @Override
     public void insert(T value) {
-        this.
+//        this.
     }
 
     @Override

@@ -1,11 +1,9 @@
 package com.interview.questions.linkedList;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 import java.util.function.Predicate;
 
-public class LinkedListImpl<T> implements LinkedList<T> {
+public class LinkedListImpl<T extends Object> implements LinkedList<T> {
     private LinkedListNode head;
     private LinkedListNode tail;
     private int size;
@@ -27,16 +25,12 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     }
 
     @Override
-    public void forEach(Predicate<T> predicate) {
-        LinkedListNode currentLinkedListNode = this.head;
-        while(currentLinkedListNode.hasNext()) {
-            predicate.test((T) currentLinkedListNode.getValue());
-            currentLinkedListNode = currentLinkedListNode.getNext();
-        }
+    public List<T> getAllValues() {
+        return null;
     }
 
     @Override
-    public void add(T value) {
+    public boolean add(T value) {
         LinkedListNode linkedListNode = new LinkedListNode(value);
         if (Objects.isNull(this.head)) {
             this.head = linkedListNode;
@@ -49,6 +43,7 @@ public class LinkedListImpl<T> implements LinkedList<T> {
 
         linkedListUi.add(value.toString());
         size++;
+        return true;
     }
 
     @Override
@@ -83,18 +78,39 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     }
 
     @Override
-    public void remove(T value) {
+    public boolean remove(Object value) {
         LinkedListNode currentLinkedListNode = this.head;
         while(!Objects.isNull(currentLinkedListNode)) {
             if (currentLinkedListNode.getValue().equals(value)) {
                 removeNode(currentLinkedListNode);
 
                 linkedListUi.remove(value.toString());
-                break;
+                return true;
             }
 
             currentLinkedListNode = currentLinkedListNode.getNext();
         }
+        return false;
+    }
+
+    @Override
+    public boolean containsAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean addAll(Collection<? extends T> c) {
+        return false;
+    }
+
+    @Override
+    public boolean removeAll(Collection<?> c) {
+        return false;
+    }
+
+    @Override
+    public boolean retainAll(Collection<?> c) {
+        return false;
     }
 
     @Override
@@ -126,7 +142,17 @@ public class LinkedListImpl<T> implements LinkedList<T> {
     }
 
     @Override
-    public boolean contains(T value) {
+    public int size() {
+        return 0;
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return false;
+    }
+
+    @Override
+    public boolean contains(Object value) {
         LinkedListNode currentLinkedListNode = this.head;
         while(!Objects.isNull(currentLinkedListNode)) {
             if (currentLinkedListNode.getValue().equals(value)) {
@@ -135,6 +161,21 @@ public class LinkedListImpl<T> implements LinkedList<T> {
             currentLinkedListNode = currentLinkedListNode.getNext();
         }
         return false;
+    }
+
+    @Override
+    public Iterator<T> iterator() {
+        return null;
+    }
+
+    @Override
+    public Object[] toArray() {
+        return new Object[0];
+    }
+
+    @Override
+    public <T1> T1[] toArray(T1[] a) {
+        return null;
     }
 
     @Override
