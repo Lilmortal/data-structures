@@ -25,11 +25,6 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
     }
 
     @Override
-    public List<T> getAllValues() {
-        return null;
-    }
-
-    @Override
     public boolean add(T value) {
         LinkedListNode linkedListNode = new LinkedListNode(value);
         if (Objects.isNull(this.head)) {
@@ -53,12 +48,12 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
             this.head = linkedListNode;
             this.tail = linkedListNode;
         } else {
-            if (pos > getSize()) {
-                System.out.println("-- Position " + pos + " is greater than current size which is " + getSize() + " --");
+            if (pos > size()) {
+                System.out.println("-- Position " + pos + " is greater than current size which is " + size() + " --");
                 return;
             }
 
-            if (pos == getSize() - 1) {
+            if (pos == size() - 1) {
                 this.tail = linkedListNode;
             }
 
@@ -93,21 +88,25 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
         return false;
     }
 
+    // TODO: implement
     @Override
     public boolean containsAll(Collection<?> c) {
         return false;
     }
 
+    // TODO: implement
     @Override
     public boolean addAll(Collection<? extends T> c) {
         return false;
     }
 
+    // TODO: implement
     @Override
     public boolean removeAll(Collection<?> c) {
         return false;
     }
 
+    // TODO: implement
     @Override
     public boolean retainAll(Collection<?> c) {
         return false;
@@ -143,12 +142,12 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
 
     @Override
     public int size() {
-        return 0;
+        return size;
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return size <= 0;
     }
 
     @Override
@@ -165,14 +164,31 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
 
     @Override
     public Iterator<T> iterator() {
-        return null;
+        LinkedListNode ss = this.head;
+        return new Iterator<T>() {
+            private LinkedListNode currentNode = ss;
+
+            @Override
+            public boolean hasNext() {
+                return currentNode != null ? currentNode.getValue() != null || currentNode.hasNext() : false;
+            }
+
+            @Override
+            public T next() {
+                T value = (T) (currentNode.getValue());
+                currentNode = currentNode.getNext();
+                return value;
+            }
+        };
     }
 
+    // TODO: implement
     @Override
     public Object[] toArray() {
         return new Object[0];
     }
 
+    // TODO: implement
     @Override
     public <T1> T1[] toArray(T1[] a) {
         return null;
@@ -189,11 +205,6 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
     }
 
     @Override
-    public int getSize() {
-        return size;
-    }
-
-    @Override
     public String getLinkedListUi() {
         return linkedListUi.toString();
     }
@@ -201,17 +212,23 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
-        if (!(o instanceof LinkedListImpl)) return false;
+        if (o == null || getClass() != o.getClass()) return false;
+
         LinkedListImpl<?> that = (LinkedListImpl<?>) o;
-        return getSize() == that.getSize() &&
-                Objects.equals(head, that.head) &&
-                Objects.equals(tail, that.tail);
+
+        if (size != that.size) return false;
+        if (head != null ? !head.equals(that.head) : that.head != null) return false;
+        if (tail != null ? !tail.equals(that.tail) : that.tail != null) return false;
+        return linkedListUi != null ? linkedListUi.equals(that.linkedListUi) : that.linkedListUi == null;
     }
 
     @Override
     public int hashCode() {
-
-        return Objects.hash(head, tail, getSize());
+        int result = head != null ? head.hashCode() : 0;
+        result = 31 * result + (tail != null ? tail.hashCode() : 0);
+        result = 31 * result + size;
+        result = 31 * result + (linkedListUi != null ? linkedListUi.hashCode() : 0);
+        return result;
     }
 
     private void removeNode(LinkedListNode linkedListNode) {

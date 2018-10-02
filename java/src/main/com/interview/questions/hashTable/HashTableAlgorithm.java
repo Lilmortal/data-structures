@@ -20,7 +20,8 @@ public class HashTableAlgorithm extends Algorithm {
     @Override
     protected void printInstructions() {
         System.out.println("Press 'a' followed by a space and tuple with a comma in between to add that to the hash table. (e.g. a key,value)");
-        System.out.println("Press 'r' followed by a space and a key to remove that item from the hash table. (e.g. r key)");
+        System.out.println("Press 'r' followed by a space and a key to remove that key from the hash table. (e.g. r key)");
+        System.out.println("Press 'r' followed by a space and a tuple to remove that tuple from the hash table. (e.g. r key,value)");
     }
 
     @Override
@@ -34,8 +35,20 @@ public class HashTableAlgorithm extends Algorithm {
             }
 
             String tuple = input.substring(input.indexOf(SPACE) + 1, input.length());
-            String key = tuple.substring(0, tuple.indexOf(COMMA));
-            String value = tuple.substring(tuple.indexOf(COMMA) + 1, tuple.length());
+            String key;
+            String value;
+            if (tuple.indexOf(COMMA) != -1) {
+                key = tuple.substring(0, tuple.indexOf(COMMA));
+                value = tuple.substring(tuple.indexOf(COMMA) + 1, tuple.length());
+            } else if (!String.valueOf(input.charAt(0)).equals(REMOVE)) {
+                System.out.println();
+                System.out.println("-- Please enter a comma. --");
+                System.out.println();
+                return;
+            } else {
+                key = tuple;
+                value = tuple;
+            }
 
             if (key.isEmpty()) {
                 System.out.println();
@@ -55,15 +68,19 @@ public class HashTableAlgorithm extends Algorithm {
                 hashTable.put(key, value);
 
                 System.out.println("Hash Table:");
-                System.out.println(hashTable.getAllValues());
+                System.out.println(hashTable.getUi());
 
             }
 
             if (String.valueOf(input.charAt(0)).equals(REMOVE)) {
-                hashTable.remove(key);
+                if (tuple.indexOf(COMMA) != -1) {
+                    hashTable.remove(key, value);
+                } else {
+                    hashTable.remove(key);
+                }
 
                 System.out.println("Hash Table:");
-                System.out.println(hashTable.getAllValues());
+                System.out.println(hashTable.getUi());
             }
 
         }

@@ -15,7 +15,7 @@ public class StackLinkedListImpl<T> implements Stack<T> {
 
     @Override
     public T pop() {
-        if (this.list.getSize() == 0) {
+        if (this.list.size() == 0) {
             // TODO: Throw exception instead of sout
             System.out.println("Nothing left to pop in linked list stack.");
             return null;
@@ -51,7 +51,7 @@ public class StackLinkedListImpl<T> implements Stack<T> {
 
     @Override
     public boolean isEmpty() {
-        return this.list.getSize() <= 0;
+        return this.list.size() <= 0;
     }
 
     private void updateStackUiMessage(String msg, String obj) {

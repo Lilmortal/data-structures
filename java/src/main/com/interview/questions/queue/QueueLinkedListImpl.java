@@ -38,7 +38,7 @@ public class QueueLinkedListImpl<T> implements Queue<T> {
 
     @Override
     public boolean isEmpty() {
-        return this.list.getSize() <= 0;
+        return this.list.size() <= 0;
     }
 
     @Override

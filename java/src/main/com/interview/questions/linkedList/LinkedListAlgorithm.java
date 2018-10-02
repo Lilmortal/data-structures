@@ -61,7 +61,7 @@ public class LinkedListAlgorithm extends Algorithm {
             try {
                 int positionNum = Integer.parseInt(position);
 
-                if (positionNum > linkedList.getSize()) {
+                if (positionNum > linkedList.size()) {
                     System.out.println("-- The position number you entered is larger than the size of the list. --");
                 } else {
                     linkedList.remove(positionNum);
