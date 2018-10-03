@@ -54,16 +54,7 @@ public class HashTableImpl<K, V> implements HashTable<K, V> {
             return;
         }
 
-//        List<Integer> indexToBeRemoved = new ArrayList<>();
-//
-//        indexToBeRemoved = Arrays.stream(this.table)
-//                .filter(Objects::nonNull)
-//                .flatMap(Collection::stream)
-//                .filter(map -> map.getKey().equals(key))
-//                .sorted(Collections.reverseOrder())
-//                .collect(Collectors.toList());
-        // TODO: infinite loop if dont remove
-        for (int i = this.table[hashCode].size(); i >= 0; i--) {
+        for (int i = this.table[hashCode].size() - 1; i >= 0; i--) {
             if (this.table[hashCode] != null && this.table[hashCode].get(i) != null && this.table[hashCode].get(i).getKey().equals(key)) {
                 this.table[hashCode].remove(i);
             }
@@ -85,7 +76,11 @@ public class HashTableImpl<K, V> implements HashTable<K, V> {
             }
         }
 
-        indexToBeRemoved.stream().forEach(index -> this.table[hashCode].remove((int)index));
+        if (indexToBeRemoved.size() <= 0) {
+            System.out.println("No map with key " + key + " and value " + value + " can be found.");
+        } else {
+            indexToBeRemoved.stream().forEach(index -> this.table[hashCode].remove((int) index));
+        }
     }
 
     @Override
