@@ -1,9 +1,17 @@
 package com.interview.questions.tree;
 
+import java.util.Collection;
+
 public interface Heap<T> {
     void insert(T value);
 
-    void remove(T value);
+    T pop();
 
-    int getSize();
+    T first();
+
+    T last();
+
+    int size();
+
+    boolean isEmpty();
 }
