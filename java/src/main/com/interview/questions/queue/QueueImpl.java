@@ -31,7 +31,7 @@ public class QueueImpl<T> implements Queue<T> {
         tail = (tail + 1) % maxSize;
         currentSize--;
 
-        if (!Objects.isNull(queue[tail])) {
+        if (Objects.nonNull(queue[tail])) {
             updateQueueUiMessage("remove", queue[tail].toString());
         }
         return queue[tail];

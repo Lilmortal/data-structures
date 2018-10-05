@@ -30,7 +30,7 @@ public class LinkedListNode<T> {
     }
 
     public boolean hasNext() {
-        return !Objects.isNull(next);
+        return Objects.nonNull(next);
     }
 
     public T getValue() {

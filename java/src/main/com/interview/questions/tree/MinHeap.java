@@ -1,5 +1,7 @@
 package com.interview.questions.tree;
 
+import com.interview.questions.InvalidInputException;
+
 import java.util.Arrays;
 import java.util.Objects;
 
@@ -28,7 +30,7 @@ public class MinHeap implements Heap {
 
     @Override
     public void insert(Double value) {
-        int leftLeafChildPos = getLeftChildPos(this.leafPos);
+        int parentPos = getParentPos(this.leafPos);
         int rightLeafChildPos = getRightChildPos(this.leafPos);
 
         if (rightLeafChildPos > capacity) {
@@ -37,23 +39,25 @@ public class MinHeap implements Heap {
 
         if (this.leafPos == 0) {
             this.heap[0] = value;
-        } else if (this.heap[leftLeafChildPos] != null) {
-            this.heap[rightLeafChildPos] = value;
-        } else {
-            this.heap[leftLeafChildPos] = value;
+        } else if (isInBounds(parentPos)) {
+            this.heap[this.leafPos] = value;
+            heapifyUp(this.leafPos);
+
         }
-
-        heapifyUp(this.leafPos);
-
         this.leafPos++;
     }
 
     @Override
-    public Double pop() {
+    public Double pop() throws InvalidInputException {
         Double valueToBePopped = this.heap[0];
 
+        if (Objects.isNull(valueToBePopped)) {
+            throw new InvalidInputException("There is nothing in the heap");
+        }
+
         this.heap[0] = null;
-        swap(0, this.leafPos);
+        // TODO: 0 is null
+        swap(0, this.leafPos - 1);
 
         heapifyDown(0);
 
@@ -90,7 +94,7 @@ public class MinHeap implements Heap {
 
     private void heapifyUp(int pos) {
         int parentPos = getParentPos(pos);
-        if (isInBounds(parentPos) && !Objects.isNull(this.heap[parentPos]) && Objects.isNull(this.heap[pos]) && this.heap[parentPos] > this.heap[pos]) {
+        if (isInBounds(parentPos) && Objects.nonNull(this.heap[parentPos]) && Objects.nonNull(this.heap[pos]) && this.heap[parentPos] > this.heap[pos]) {
             swap(parentPos, pos);
             heapifyUp(parentPos);
         }
@@ -100,12 +104,25 @@ public class MinHeap implements Heap {
         int leftChildPos = getLeftChildPos(pos);
         int rightChildPos = getRightChildPos(pos);
 
-        if (isInBounds(leftChildPos) && !Objects.isNull(this.heap[leftChildPos]) && !Objects.isNull(this.heap[pos]) && this.heap[leftChildPos] < this.heap[pos]) {
-            swap(leftChildPos, pos);
-            heapifyDown(leftChildPos);
-        } else if (isInBounds(rightChildPos) && !Objects.isNull(this.heap[rightChildPos]) && !Objects.isNull(this.heap[pos]) && this.heap[rightChildPos] < this.heap[pos]) {
-            swap(rightChildPos, pos);
-            heapifyDown(rightChildPos);
+        int currentPos = -1;
+        if (isInBounds(leftChildPos) && isInBounds(rightChildPos)) {
+            // todo: check for null
+            if (Objects.nonNull(this.heap[leftChildPos]) && Objects.nonNull(this.heap[rightChildPos])) {
+                if (this.heap[leftChildPos] <= this.heap[rightChildPos]) {
+                    currentPos = leftChildPos;
+                } else if (this.heap[leftChildPos] > this.heap[rightChildPos]) {
+                    currentPos = rightChildPos;
+                }
+            } else if (Objects.nonNull(this.heap[leftChildPos])) {
+                currentPos = leftChildPos;
+            } else if (Objects.nonNull(this.heap[rightChildPos])) {
+                currentPos = rightChildPos;
+            }
+        }
+
+        if (isInBounds(currentPos) && Objects.nonNull(this.heap[currentPos]) && Objects.nonNull(this.heap[pos]) && this.heap[currentPos] < this.heap[pos]) {
+            swap(currentPos, pos);
+            heapifyDown(currentPos);
         }
     }
 

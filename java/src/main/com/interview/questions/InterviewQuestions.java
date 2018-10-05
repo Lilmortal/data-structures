@@ -35,7 +35,7 @@ public class InterviewQuestions {
                         continue;
                     }
 
-                    if (!Objects.isNull(algorithm)) {
+                    if (Objects.nonNull(algorithm)) {
                         try {
                             algorithm.run(br);
                         } catch (ExitException e) {

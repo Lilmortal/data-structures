@@ -16,7 +16,7 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
     }
 
     public LinkedListImpl(T value) {
-        if (!Objects.isNull(value)) {
+        if (Objects.nonNull(value)) {
             LinkedListNode linkedListNode = new LinkedListNode(value);
             this.head = linkedListNode;
             this.tail = linkedListNode;
@@ -76,7 +76,7 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
     @Override
     public boolean remove(Object value) {
         LinkedListNode currentLinkedListNode = this.head;
-        while(!Objects.isNull(currentLinkedListNode)) {
+        while(Objects.nonNull(currentLinkedListNode)) {
             if (currentLinkedListNode.getValue().equals(value)) {
                 removeNode(currentLinkedListNode);
 
@@ -154,7 +154,7 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
     @Override
     public boolean contains(Object value) {
         LinkedListNode currentLinkedListNode = this.head;
-        while(!Objects.isNull(currentLinkedListNode)) {
+        while(Objects.nonNull(currentLinkedListNode)) {
             if (currentLinkedListNode.getValue().equals(value)) {
                 return true;
             }
@@ -236,7 +236,7 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
         LinkedListNode previousLinkedListNode = linkedListNode.getPrevious();
         LinkedListNode nextLinkedListNode = linkedListNode.getNext();
 
-        if (!Objects.isNull(previousLinkedListNode)) {
+        if (Objects.nonNull(previousLinkedListNode)) {
             previousLinkedListNode.setNext(nextLinkedListNode);
         }
 

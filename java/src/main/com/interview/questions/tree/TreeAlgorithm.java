@@ -17,7 +17,7 @@ public class TreeAlgorithm extends Algorithm {
 
     @Override
     protected void printInstructions() {
-        System.out.println("Press 'a' followed by a string to add that to the stack. e.g. (astring)");
+        System.out.println("Press 'a' followed by a number to add that to the stack. e.g. (a20)");
         System.out.println("Press 'r' to remove an item from the stack.");
     }
 
@@ -25,7 +25,7 @@ public class TreeAlgorithm extends Algorithm {
     public String execute(String input, BufferedReader br) throws ExitException, InvalidInputException {
         if (String.valueOf(input.charAt(0)).equals(ADD)) {
             if (input.length() <= 1) {
-                throw new InvalidInputException("Press enter a string to add into the stack");
+                throw new InvalidInputException("Press enter a number to add into the stack");
             }
 
             Double userInput;
