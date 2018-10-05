@@ -1,20 +1,17 @@
 package com.interview.questions.tree;
 
-import com.interview.questions.InvalidInputException;
-
-import java.util.Arrays;
 import java.util.Objects;
 
-public class MinHeap extends Heap implements Tree {
+public class MaxHeap extends Heap implements Tree {
     @Override
     public String getName() {
-        return "Min Heap";
+        return "Max Heap";
     }
 
     @Override
     protected void heapifyUp(int pos) {
         int parentPos = getParentPos(pos);
-        if (isInBounds(parentPos) && Objects.nonNull(this.heap[parentPos]) && Objects.nonNull(this.heap[pos]) && this.heap[parentPos] > this.heap[pos]) {
+        if (isInBounds(parentPos) && Objects.nonNull(this.heap[parentPos]) && Objects.nonNull(this.heap[pos]) && this.heap[parentPos] < this.heap[pos]) {
             swap(parentPos, pos);
             heapifyUp(parentPos);
         }
@@ -28,9 +25,9 @@ public class MinHeap extends Heap implements Tree {
         int currentPos = -1;
         if (isInBounds(leftChildPos) && isInBounds(rightChildPos)) {
             if (Objects.nonNull(this.heap[leftChildPos]) && Objects.nonNull(this.heap[rightChildPos])) {
-                if (this.heap[leftChildPos] <= this.heap[rightChildPos]) {
+                if (this.heap[leftChildPos] >= this.heap[rightChildPos]) {
                     currentPos = leftChildPos;
-                } else if (this.heap[leftChildPos] > this.heap[rightChildPos]) {
+                } else if (this.heap[leftChildPos] < this.heap[rightChildPos]) {
                     currentPos = rightChildPos;
                 }
             } else if (Objects.nonNull(this.heap[leftChildPos])) {
@@ -40,7 +37,7 @@ public class MinHeap extends Heap implements Tree {
             }
         }
 
-        if (isInBounds(currentPos) && Objects.nonNull(this.heap[currentPos]) && Objects.nonNull(this.heap[pos]) && this.heap[currentPos] < this.heap[pos]) {
+        if (isInBounds(currentPos) && Objects.nonNull(this.heap[currentPos]) && Objects.nonNull(this.heap[pos]) && this.heap[currentPos] > this.heap[pos]) {
             swap(currentPos, pos);
             heapifyDown(currentPos);
         }

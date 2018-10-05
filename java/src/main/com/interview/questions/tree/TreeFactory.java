@@ -9,7 +9,7 @@ public class TreeFactory {
                 return new MinHeap();
             }
             case "maxHeap": {
-                return null;
+                return new MaxHeap();
             }
             case "binarySearch": {
                 return new BinarySearchTree();
