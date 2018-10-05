@@ -37,7 +37,7 @@ public class InterviewQuestions {
 
                     if (!Objects.isNull(algorithm)) {
                         try {
-                            System.out.println(algorithm.getResult(br));
+                            algorithm.run(br);
                         } catch (ExitException e) {
                             // do nothing, it is exited.
                         } catch (Exception e) {

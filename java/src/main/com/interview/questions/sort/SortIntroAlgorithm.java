@@ -25,7 +25,8 @@ public class SortIntroAlgorithm extends Algorithm {
     public String execute(String input, BufferedReader br) throws ExitException, InvalidInputException {
         if (Input.isValid(input)) {
             SortAlgorithm sortAlgorithm = new SortAlgorithm(this.sortResource, input);
-            return sortAlgorithm.getResult(br);
+            sortAlgorithm.run(br);
+            return null;
         } else {
             throw new InvalidInputException("Please enter the numbers in this format e.g. 10 20 30");
         }

@@ -16,7 +16,7 @@ public abstract class Algorithm {
         System.out.println("Type \"exit\" to go back.");
     }
 
-    public final String getResult(BufferedReader br) throws ExitException {
+    public final void run(BufferedReader br) throws ExitException {
         try {
             String input;
 
@@ -34,14 +34,13 @@ public abstract class Algorithm {
                     try {
                         result = execute(input, br);
                     } catch (InvalidInputException e) {
-                        // TODO: fix
                         System.out.println();
                         System.out.println("-- " + e.getMessage() + ". --");
                         System.out.println();
                         continue;
                     }
 
-                    return result;
+                    System.out.println(result);
                 } else {
                     System.out.println("-- Please enter an input. --");
                     System.out.println();
