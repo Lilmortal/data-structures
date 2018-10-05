@@ -20,9 +20,9 @@ public class HashTableAlgorithm extends Algorithm {
 
     @Override
     protected void printInstructions() {
-        System.out.println("Press 'a' followed by a space and tuple with a comma in between to add that to the hash table. (e.g. a key,value)");
-        System.out.println("Press 'r' followed by a space and a key to remove that key from the hash table. (e.g. r key)");
-        System.out.println("Press 'r' followed by a space and a tuple to remove that tuple from the hash table. (e.g. r key,value)");
+        System.out.println("Press 'a' followed by a space and tuple with a comma in between to add that to the hash table. e.g. (a key,value)");
+        System.out.println("Press 'r' followed by a space and a key to remove that key from the hash table. e.g. (r key)");
+        System.out.println("Press 'r' followed by a space and a tuple to remove that tuple from the hash table. e.g. (r key,value)");
     }
 
     @Override

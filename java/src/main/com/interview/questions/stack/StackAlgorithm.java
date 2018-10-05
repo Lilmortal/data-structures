@@ -17,7 +17,7 @@ public class StackAlgorithm extends Algorithm {
     private Stack<String> linkedListStack = new StackLinkedListImpl<>();
     @Override
     protected void printInstructions() {
-        System.out.println("Press 'a' followed by a string to add that to the queue.");
+        System.out.println("Press 'a' followed by a string to add that to the queue. e.g. (astring)");
         System.out.println("Press 'r' to remove one item from the queue.");
     }
 

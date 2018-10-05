@@ -18,7 +18,7 @@ public class QueueAlgorithm extends Algorithm {
 
     @Override
     protected void printInstructions() {
-        System.out.println("Press 'a' followed by a string to add that to the stack.");
+        System.out.println("Press 'a' followed by a string to add that to the stack. e.g. (astring)");
         System.out.println("Press 'r' to remove an item from the stack.");
     }
 

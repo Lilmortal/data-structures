@@ -18,10 +18,10 @@ public class LinkedListAlgorithm extends Algorithm {
 
     @Override
     protected void printInstructions() {
-        System.out.println("Press 'a' followed by a space and a string to add that to the linked list.");
-        System.out.println("Press 'a' followed by a number, then a space and a string to add that to the linked list in that position.");
-        System.out.println("Press 'r' followed by a space and a string to remove that string from the linked list.");
-        System.out.println("Press 'r' followed by a number to remove the item from that position.");
+        System.out.println("Press 'a' followed by a space and a string to add that to the linked list. e.g. (a string)");
+        System.out.println("Press 'a' followed by a number, then a space and a string to add that to the linked list in that position. e.g. (a20 string)");
+        System.out.println("Press 'r' followed by a space and a string to remove that string from the linked list. e.g. (r string)");
+        System.out.println("Press 'r' followed by a number to remove the item from that position. e.g. (r20)");
     }
 
     @Override
