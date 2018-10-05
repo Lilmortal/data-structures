@@ -33,6 +33,11 @@ public class AlgorithmResource {
                 break;
             }
 
+            case "6": {
+                algorithm = algorithmFactory.getAlgorithm("tree");
+                break;
+            }
+
             default: {
                 throw new InvalidInputException("Invalid input");
             }

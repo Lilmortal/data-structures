@@ -1,5 +1,6 @@
 package com.interview.questions.stack;
 
+import com.interview.questions.InvalidInputException;
 import com.interview.questions.linkedList.LinkedList;
 import com.interview.questions.linkedList.LinkedListImpl;
 import com.interview.questions.linkedList.LinkedListNode;
@@ -14,11 +15,9 @@ public class StackLinkedListImpl<T> implements Stack<T> {
     }
 
     @Override
-    public T pop() {
+    public T pop() throws InvalidInputException {
         if (this.list.size() == 0) {
-            // TODO: Throw exception instead of sout
-            System.out.println("Nothing left to pop in linked list stack.");
-            return null;
+            throw new InvalidInputException("Nothing left to pop in linked list stack");
         }
 
         T lastValue = (T) this.list.getLastNode().getValue();

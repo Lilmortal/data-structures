@@ -1,5 +1,6 @@
 package com.interview.questions.hashTable;
 
+import com.interview.questions.InvalidInputException;
 import com.interview.questions.linkedList.LinkedList;
 import com.interview.questions.linkedList.LinkedListImpl;
 
@@ -47,11 +48,10 @@ public class HashTableImpl<K, V> implements HashTable<K, V> {
     }
 
     @Override
-    public void remove(K key) {
+    public void remove(K key) throws InvalidInputException {
         int hashCode = getHashCode(key);
         if (this.table[hashCode] == null || this.table[hashCode].size() == 0) {
-            System.out.println(key + " is missing in hash table.");
-            return;
+            throw new InvalidInputException(key + " is missing in hash table");
         }
 
         for (int i = this.table[hashCode].size() - 1; i >= 0; i--) {
@@ -62,11 +62,10 @@ public class HashTableImpl<K, V> implements HashTable<K, V> {
     }
 
     @Override
-    public void remove(K key, V value) {
+    public void remove(K key, V value) throws InvalidInputException {
         int hashCode = getHashCode(key);
         if (this.table[hashCode] == null || this.table[hashCode].size() == 0) {
-            System.out.println(key + " is missing in hash table.");
-            return;
+            throw new InvalidInputException(key + " is missing in hash table");
         }
 
         List<Integer> indexToBeRemoved = new ArrayList<>();
@@ -77,7 +76,7 @@ public class HashTableImpl<K, V> implements HashTable<K, V> {
         }
 
         if (indexToBeRemoved.size() <= 0) {
-            System.out.println("No map with key " + key + " and value " + value + " can be found.");
+            throw new InvalidInputException("No map with key " + key + " and value " + value + " can be found");
         } else {
             indexToBeRemoved.stream().forEach(index -> this.table[hashCode].remove((int) index));
         }

@@ -1,15 +1,13 @@
 package com.interview.questions.tree;
 
-import java.util.Collection;
+public interface Heap {
+    void insert(Double value);
 
-public interface Heap<T> {
-    void insert(T value);
+    Double pop();
 
-    T pop();
+    Double first();
 
-    T first();
-
-    T last();
+    Double last();
 
     int size();
 

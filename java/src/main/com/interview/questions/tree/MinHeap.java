@@ -1,32 +1,33 @@
 package com.interview.questions.tree;
 
-public class MinHeap<T> implements Heap<T> {
-    private static final int CAPACITY_RESIZE = 2;
+import java.util.Arrays;
+import java.util.Objects;
 
+public class MinHeap implements Heap {
     private int capacity;
 
-    private T[] heap;
+    private Double[] heap;
 
     private int leafPos;
 
     public MinHeap() {
         this.capacity = 10;
-        this.heap = (T[]) new Object[this.capacity];
+        this.heap = new Double[this.capacity];
         this.leafPos = 0;
     }
 
     @Override
-    public T first() {
+    public Double first() {
         return this.heap[0];
     }
 
     @Override
-    public T last() {
+    public Double last() {
         return this.heap[this.leafPos];
     }
 
     @Override
-    public void insert(T value) {
+    public void insert(Double value) {
         int leftLeafChildPos = getLeftChildPos(this.leafPos);
         int rightLeafChildPos = getRightChildPos(this.leafPos);
 
@@ -34,23 +35,29 @@ public class MinHeap<T> implements Heap<T> {
             resizeHeap();
         }
 
-        if (this.heap[leftLeafChildPos] != null) {
+        if (this.leafPos == 0) {
+            this.heap[0] = value;
+        } else if (this.heap[leftLeafChildPos] != null) {
             this.heap[rightLeafChildPos] = value;
         } else {
             this.heap[leftLeafChildPos] = value;
         }
 
         heapifyUp(this.leafPos);
+
+        this.leafPos++;
     }
 
     @Override
-    public T pop() {
-        T valueToBePopped = this.heap[0];
+    public Double pop() {
+        Double valueToBePopped = this.heap[0];
 
         this.heap[0] = null;
         swap(0, this.leafPos);
 
         heapifyDown(0);
+
+        this.leafPos--;
         return valueToBePopped;
     }
 
@@ -64,11 +71,18 @@ public class MinHeap<T> implements Heap<T> {
         return this.leafPos <= 0;
     }
 
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        Arrays.stream(this.heap).filter(Objects::nonNull).forEach(heap -> sb.append("[ " + heap.toString() + " ] "));
+        return sb.toString();
+    }
+
     private void resizeHeap() {
         // TODO: THINK
         this.capacity *= this.capacity;
-        T[] tempHeap = this.heap;
-        this.heap = (T[]) new Object[this.capacity];
+        Double[] tempHeap = this.heap;
+        this.heap = new Double[this.capacity];
         for (int i = 0; i < this.heap.length; i++) {
             this.heap[i] = tempHeap[i];
         }
@@ -76,7 +90,7 @@ public class MinHeap<T> implements Heap<T> {
 
     private void heapifyUp(int pos) {
         int parentPos = getParentPos(pos);
-        if (parentPos > pos) {
+        if (isInBounds(parentPos) && !Objects.isNull(this.heap[parentPos]) && Objects.isNull(this.heap[pos]) && this.heap[parentPos] > this.heap[pos]) {
             swap(parentPos, pos);
             heapifyUp(parentPos);
         }
@@ -86,17 +100,17 @@ public class MinHeap<T> implements Heap<T> {
         int leftChildPos = getLeftChildPos(pos);
         int rightChildPos = getRightChildPos(pos);
 
-        if (leftChildPos < pos) {
+        if (isInBounds(leftChildPos) && !Objects.isNull(this.heap[leftChildPos]) && !Objects.isNull(this.heap[pos]) && this.heap[leftChildPos] < this.heap[pos]) {
             swap(leftChildPos, pos);
             heapifyDown(leftChildPos);
-        } else if (rightChildPos < pos) {
+        } else if (isInBounds(rightChildPos) && !Objects.isNull(this.heap[rightChildPos]) && !Objects.isNull(this.heap[pos]) && this.heap[rightChildPos] < this.heap[pos]) {
             swap(rightChildPos, pos);
             heapifyDown(rightChildPos);
         }
     }
 
     private void swap(int pos1, int pos2) {
-        T tempValue = this.heap[pos1];
+        Double tempValue = this.heap[pos1];
         this.heap[pos1] = this.heap[pos2];
         this.heap[pos2] = tempValue;
     }
@@ -111,5 +125,9 @@ public class MinHeap<T> implements Heap<T> {
 
     private int getRightChildPos(int pos) {
         return 2 * pos + 2;
+    }
+
+    private boolean isInBounds(int index) {
+        return index >= 0 && index < this.capacity;
     }
 }

@@ -8,6 +8,7 @@ import com.interview.questions.queue.QueueAlgorithm;
 import com.interview.questions.sort.SortIntroAlgorithm;
 import com.interview.questions.sort.SortResource;
 import com.interview.questions.stack.StackAlgorithm;
+import com.interview.questions.tree.TreeAlgorithm;
 
 public class AlgorithmFactory {
     public Algorithm getAlgorithm(String algorithmName) throws InvalidInputException {
@@ -37,6 +38,11 @@ public class AlgorithmFactory {
             case "sorting": {
                 SortResource sortResource = new SortResource();
                 algorithm = new SortIntroAlgorithm(sortResource);
+                break;
+            }
+
+            case "tree": {
+                algorithm = new TreeAlgorithm();
                 break;
             }
 

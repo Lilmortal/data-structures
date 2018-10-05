@@ -27,8 +27,6 @@ public class HashTableAlgorithm extends Algorithm {
 
     @Override
     public String execute(String input, BufferedReader br) throws InvalidInputException {
-        StringBuilder sb = new StringBuilder();
-
         if (!input.isEmpty()) {
             if (input.indexOf(SPACE) == -1) {
                 throw new InvalidInputException("Please enter a space");
@@ -57,10 +55,6 @@ public class HashTableAlgorithm extends Algorithm {
 
             if (String.valueOf(input.charAt(0)).equals(ADD)) {
                 hashTable.put(key, value);
-
-                sb.append("Hash Table:");
-                sb.append(hashTable.getUi());
-
             }
 
             if (String.valueOf(input.charAt(0)).equals(REMOVE)) {
@@ -69,11 +63,19 @@ public class HashTableAlgorithm extends Algorithm {
                 } else {
                     hashTable.remove(key);
                 }
-
-                sb.append("Hash Table:");
-                sb.append(hashTable.getUi());
             }
         }
+        return printResult();
+    }
+
+    private String printResult() {
+        StringBuilder sb = new StringBuilder();
+
+        sb.append("\n");
+        sb.append("Hash Table:");
+        sb.append("\n");
+        sb.append(hashTable.getUi());
+        sb.append("\n");
         return sb.toString();
     }
 }

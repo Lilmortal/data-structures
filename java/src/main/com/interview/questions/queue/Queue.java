@@ -1,9 +1,11 @@
 package com.interview.questions.queue;
 
-public interface Queue<T> {
-    T remove();
+import com.interview.questions.InvalidInputException;
 
-    void add(T obj);
+public interface Queue<T> {
+    T remove() throws InvalidInputException;
+
+    void add(T obj) throws InvalidInputException;
 
     boolean isEmpty();
 

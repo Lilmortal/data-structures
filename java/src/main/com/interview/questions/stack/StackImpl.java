@@ -1,5 +1,7 @@
 package com.interview.questions.stack;
 
+import com.interview.questions.InvalidInputException;
+
 public class StackImpl<T> implements Stack<T> {
     // Resize capacity by this number if full
     private static final int CAPACITY_RESIZE = 2;
@@ -17,10 +19,9 @@ public class StackImpl<T> implements Stack<T> {
     }
 
     @Override
-    public synchronized T pop() {
+    public synchronized T pop() throws InvalidInputException {
         if (isEmpty()) {
-            System.out.println("Nothing left to pop.");
-            return null;
+            throw new InvalidInputException("Nothing left to pop");
         }
 
         String obj = stack[head].toString();

@@ -1,5 +1,7 @@
 package com.interview.questions.linkedList;
 
+import com.interview.questions.InvalidInputException;
+
 import java.util.*;
 import java.util.function.Predicate;
 
@@ -42,15 +44,14 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
     }
 
     @Override
-    public void add(T value, int pos) {
+    public void add(T value, int pos) throws InvalidInputException {
         LinkedListNode linkedListNode = new LinkedListNode(value);
         if (Objects.isNull(this.head)) {
             this.head = linkedListNode;
             this.tail = linkedListNode;
         } else {
             if (pos > size()) {
-                System.out.println("-- Position " + pos + " is greater than current size which is " + size() + " --");
-                return;
+                throw new InvalidInputException("Position " + pos + " is greater than current size which is " + size());
             }
 
             if (pos == size() - 1) {

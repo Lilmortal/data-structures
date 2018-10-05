@@ -1,5 +1,6 @@
 package com.interview.questions.queue;
 
+import com.interview.questions.InvalidInputException;
 import com.interview.questions.linkedList.LinkedList;
 import com.interview.questions.linkedList.LinkedListImpl;
 import com.interview.questions.linkedList.LinkedListNode;
@@ -16,10 +17,9 @@ public class QueueLinkedListImpl<T> implements Queue<T> {
     }
 
     @Override
-    public T remove() {
+    public T remove() throws InvalidInputException {
         if (Objects.isNull(this.list.getFirstNode())) {
-            System.out.println("Linked list queue is empty.");
-            return null;
+            throw new InvalidInputException("Linked list queue is empty");
         }
 
         T firstNodeValue = (T) this.list.getFirstNode().getValue();

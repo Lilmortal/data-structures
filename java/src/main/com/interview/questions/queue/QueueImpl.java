@@ -1,5 +1,7 @@
 package com.interview.questions.queue;
 
+import com.interview.questions.InvalidInputException;
+
 import java.util.Objects;
 
 // Implemention of the circular queue
@@ -21,10 +23,9 @@ public class QueueImpl<T> implements Queue<T> {
     }
 
     @Override
-    public synchronized T remove() {
+    public synchronized T remove() throws InvalidInputException {
         if (isEmpty()) {
-            System.out.println("Queue is empty.");
-            return null;
+            throw new InvalidInputException("Queue is empty");
         }
 
         tail = (tail + 1) % maxSize;
@@ -37,9 +38,9 @@ public class QueueImpl<T> implements Queue<T> {
     }
 
     @Override
-    public void add(T obj) {
+    public void add(T obj) throws InvalidInputException {
         if (isFull()) {
-            System.out.println("Queue is full.");
+            throw new InvalidInputException("Queue is full");
         }
 
         updateQueueUiMessage("add", obj.toString());

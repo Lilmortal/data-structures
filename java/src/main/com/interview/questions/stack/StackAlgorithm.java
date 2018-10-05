@@ -23,34 +23,35 @@ public class StackAlgorithm extends Algorithm {
 
     @Override
     public String execute(String input, BufferedReader br) throws InvalidInputException {
-        StringBuilder sb = new StringBuilder();
-
         if (String.valueOf(input.charAt(0)).equals(ADD)) {
             if (input.length() <= 1) {
                 throw new InvalidInputException("Press enter a string to add into the stack");
             }
             stack.push(input.substring(1));
             linkedListStack.push(input.substring(1));
-
-            sb.append("Stack:");
-            sb.append(stack.getStackUi());
-
-            sb.append("Linked List Stack:");
-            sb.append(linkedListStack.getStackUi());
         } else if (String.valueOf(input.charAt(0)).equals(REMOVE)) {
             stack.pop();
             linkedListStack.pop();
-
-            sb.append("Stack:");
-            sb.append(stack.getStackUi());
-
-            sb.append("Linked List Stack:");
-            sb.append(linkedListStack.getStackUi());
         } else {
-            System.out.println();
-            System.out.println("Please enter a valid input.");
+            throw new InvalidInputException("Please enter a valid input");
         }
 
+        return printResult();
+
+    }
+
+    private String printResult() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
+        sb.append("Stack:");
+        sb.append("\n");
+        sb.append(stack.getStackUi());
+        sb.append("\n");
+
+        sb.append("Linked List Stack:");
+        sb.append("\n");
+        sb.append(linkedListStack.getStackUi());
+        sb.append("\n");
         return sb.toString();
     }
 }

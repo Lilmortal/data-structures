@@ -31,6 +31,10 @@ public class SortAlgorithm extends Algorithm {
     public String execute(String input, BufferedReader br) throws InvalidInputException {
         sortResource.setSort(input);
 
+        return printResult();
+    }
+
+    private String printResult() {
         StringBuilder sb = new StringBuilder();
         sb.append("\n");
         sb.append(sortResource.getSortName() + " result:\n");

@@ -26,8 +26,6 @@ public class LinkedListAlgorithm extends Algorithm {
 
     @Override
     public String execute(String input, BufferedReader br) throws ExitException, InvalidInputException {
-        StringBuilder sb = new StringBuilder();
-
         if (String.valueOf(input.charAt(0)).equals(ADD)) {
             if (input.length() <= 2) {
                 throw new InvalidInputException("Press enter a string or position to add into the linked list");
@@ -79,11 +77,15 @@ public class LinkedListAlgorithm extends Algorithm {
             throw new InvalidInputException("Please enter a valid input");
         }
 
+        return printResult();
+    }
+
+    private String printResult() {
+        StringBuilder sb = new StringBuilder();
         sb.append("\n");
         sb.append("Linked List:\n");
-        sb.append(linkedList.getLinkedListUi() + "\n");
+        sb.append(linkedList.getLinkedListUi());
         sb.append("\n");
-
         return sb.toString();
     }
 }
