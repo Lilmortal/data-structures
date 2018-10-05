@@ -10,7 +10,7 @@ import java.io.IOException;
 public abstract class Algorithm {
     protected abstract void printInstructions();
 
-    protected abstract String execute(String input, BufferedReader br) throws ExitException;
+    protected abstract String execute(String input, BufferedReader br) throws ExitException, InvalidInputException;
 
     protected void printExitInstructions() {
         System.out.println("Type \"exit\" to go back.");
@@ -34,16 +34,15 @@ public abstract class Algorithm {
                     try {
                         result = execute(input, br);
                     } catch (InvalidInputException e) {
-                        System.out.println();
                         // TODO: fix
-                        System.out.println(e.getLocalizedMessage());
+                        System.out.println();
+                        System.out.println("-- " + e.getMessage() + ". --");
                         System.out.println();
                         continue;
                     }
 
                     return result;
                 } else {
-                    System.out.println();
                     System.out.println("-- Please enter an input. --");
                     System.out.println();
                 }

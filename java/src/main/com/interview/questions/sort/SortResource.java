@@ -16,7 +16,7 @@ public class SortResource {
         return sort.getName();
     }
 
-    public void setSort(String sort) {
+    public void setSort(String sort) throws InvalidInputException {
         SortFactory sortFactory = new SortFactory();
 
         switch (sort) {

@@ -22,12 +22,12 @@ public class SortIntroAlgorithm extends Algorithm {
     }
 
     @Override
-    public String execute(String input, BufferedReader br) throws ExitException {
+    public String execute(String input, BufferedReader br) throws ExitException, InvalidInputException {
         if (Input.isValid(input)) {
             SortAlgorithm sortAlgorithm = new SortAlgorithm(this.sortResource, input);
             return sortAlgorithm.getResult(br);
         } else {
-            throw new InvalidInputException("-- Please enter the numbers in this format e.g. 10 20 30");
+            throw new InvalidInputException("Please enter the numbers in this format e.g. 10 20 30");
         }
     }
 }

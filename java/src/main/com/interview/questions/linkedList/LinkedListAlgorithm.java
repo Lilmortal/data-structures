@@ -25,16 +25,16 @@ public class LinkedListAlgorithm extends Algorithm {
     }
 
     @Override
-    public String execute(String input, BufferedReader br) throws ExitException {
+    public String execute(String input, BufferedReader br) throws ExitException, InvalidInputException {
         StringBuilder sb = new StringBuilder();
 
         if (String.valueOf(input.charAt(0)).equals(ADD)) {
             if (input.length() <= 2) {
-                throw new InvalidInputException("-- Press enter a string or position to add into the linked list. --");
+                throw new InvalidInputException("Press enter a string or position to add into the linked list");
             }
 
             if (input.indexOf(SPACE) == -1) {
-                throw new InvalidInputException("-- Please enter a space. --");
+                throw new InvalidInputException("Please enter a space");
             }
 
             String position = input.substring(1, input.indexOf(SPACE));
@@ -45,14 +45,14 @@ public class LinkedListAlgorithm extends Algorithm {
                 linkedList.add(obj, positionNum);
             } catch (NumberFormatException | NullPointerException e) {
                 if (obj.length() == 0) {
-                    throw new InvalidInputException("-- Please enter a string that you want added to the linked list. --");
+                    throw new InvalidInputException("Please enter a string that you want added to the linked list");
                 } else {
                     linkedList.add(obj);
                 }
             }
         } else if (String.valueOf(input.charAt(0)).equals(REMOVE)) {
             if (input.length() < 2) {
-                throw new InvalidInputException("-- Press enter an position or a string that will be removed from the linked list. --");
+                throw new InvalidInputException("Press enter an position or a string that will be removed from the linked list");
             }
 
             String position = input.substring(1);
@@ -62,21 +62,21 @@ public class LinkedListAlgorithm extends Algorithm {
                 int positionNum = Integer.parseInt(position);
 
                 if (positionNum > linkedList.size()) {
-                    throw new InvalidInputException("-- The position number you entered is larger than the size of the list. --");
+                    throw new InvalidInputException("The position number you entered is larger than the size of the list");
                 } else {
                     linkedList.remove(positionNum);
                 }
             } catch (NumberFormatException | NullPointerException e) {
                 if (input.indexOf(SPACE) == -1) {
-                    throw new InvalidInputException("-- Please enter a space.");
+                    throw new InvalidInputException("Please enter a space");
                 } else if (obj.length() == 0) {
-                    throw new InvalidInputException("-- Please enter a string that you want removed from the linked list. --");
+                    throw new InvalidInputException("Please enter a string that you want removed from the linked list");
                 } else {
                     linkedList.remove(obj);
                 }
             }
         } else {
-            throw new InvalidInputException("-- Please enter a valid input. --");
+            throw new InvalidInputException("Please enter a valid input");
         }
 
         sb.append("\n");

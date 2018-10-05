@@ -21,7 +21,6 @@ public class SortAlgorithm extends Algorithm {
 
     @Override
     protected void printInstructions() {
-        System.out.println();
         System.out.println("Which sorting algorithm you want to test, type the number:");
         System.out.println("1. Insertion Sort");
         System.out.println("2. Merge Sort");
@@ -29,14 +28,13 @@ public class SortAlgorithm extends Algorithm {
     }
 
     @Override
-    public String execute(String input, BufferedReader br) {
+    public String execute(String input, BufferedReader br) throws InvalidInputException {
         sortResource.setSort(input);
 
         StringBuilder sb = new StringBuilder();
         sb.append("\n");
         sb.append(sortResource.getSortName() + " result:\n");
         sb.append(Arrays.toString(sortResource.getSortedUserInput(this.input)) + "\n");
-        sb.append("\n");
         return sb.toString();
     }
 }

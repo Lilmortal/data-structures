@@ -1,6 +1,6 @@
 package com.interview.questions;
 
-public class InvalidInputException extends RuntimeException {
+public class InvalidInputException extends Exception {
     private String error;
 
     public InvalidInputException() {
@@ -29,5 +29,9 @@ public class InvalidInputException extends RuntimeException {
     public InvalidInputException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, String error) {
         super(message, cause, enableSuppression, writableStackTrace);
         this.error = error;
+    }
+
+    public String getError() {
+        return error;
     }
 }

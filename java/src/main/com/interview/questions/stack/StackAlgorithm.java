@@ -22,12 +22,12 @@ public class StackAlgorithm extends Algorithm {
     }
 
     @Override
-    public String execute(String input, BufferedReader br) {
+    public String execute(String input, BufferedReader br) throws InvalidInputException {
         StringBuilder sb = new StringBuilder();
 
         if (String.valueOf(input.charAt(0)).equals(ADD)) {
             if (input.length() <= 1) {
-                throw new InvalidInputException("Press enter a string to add into the stack.");
+                throw new InvalidInputException("Press enter a string to add into the stack");
             }
             stack.push(input.substring(1));
             linkedListStack.push(input.substring(1));

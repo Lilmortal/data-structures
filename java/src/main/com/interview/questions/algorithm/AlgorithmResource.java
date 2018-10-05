@@ -3,9 +3,9 @@ package com.interview.questions.algorithm;
 import com.interview.questions.InvalidInputException;
 
 public class AlgorithmResource {
-    public Algorithm getAlgorithm(String input) {
+    public Algorithm getAlgorithm(String input) throws InvalidInputException {
         AlgorithmFactory algorithmFactory = new AlgorithmFactory();
-        Algorithm algorithm = null;
+        Algorithm algorithm;
 
         switch (input) {
             case "1": {
@@ -34,7 +34,7 @@ public class AlgorithmResource {
             }
 
             default: {
-                throw new InvalidInputException();
+                throw new InvalidInputException("Invalid input");
             }
         }
 

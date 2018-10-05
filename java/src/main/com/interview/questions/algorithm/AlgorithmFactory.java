@@ -10,7 +10,7 @@ import com.interview.questions.sort.SortResource;
 import com.interview.questions.stack.StackAlgorithm;
 
 public class AlgorithmFactory {
-    public Algorithm getAlgorithm(String algorithmName) {
+    public Algorithm getAlgorithm(String algorithmName) throws InvalidInputException {
         Algorithm algorithm;
 
         switch (algorithmName) {

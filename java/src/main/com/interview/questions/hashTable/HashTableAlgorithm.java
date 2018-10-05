@@ -26,12 +26,12 @@ public class HashTableAlgorithm extends Algorithm {
     }
 
     @Override
-    public String execute(String input, BufferedReader br) {
+    public String execute(String input, BufferedReader br) throws InvalidInputException {
         StringBuilder sb = new StringBuilder();
 
         if (!input.isEmpty()) {
             if (input.indexOf(SPACE) == -1) {
-                throw new InvalidInputException("-- Please enter a space. --");
+                throw new InvalidInputException("Please enter a space");
             }
 
             String tuple = input.substring(input.indexOf(SPACE) + 1, input.length());
@@ -41,18 +41,18 @@ public class HashTableAlgorithm extends Algorithm {
                 key = tuple.substring(0, tuple.indexOf(COMMA));
                 value = tuple.substring(tuple.indexOf(COMMA) + 1, tuple.length());
             } else if (!String.valueOf(input.charAt(0)).equals(REMOVE)) {
-                throw new InvalidInputException("-- Please enter a comma. --");
+                throw new InvalidInputException("Please enter a comma");
             } else {
                 key = tuple;
                 value = tuple;
             }
 
             if (key.isEmpty()) {
-                throw new InvalidInputException("-- Please enter a key. --");
+                throw new InvalidInputException("Please enter a key");
             }
 
             if (value.isEmpty()) {
-                throw new InvalidInputException("-- Please enter a value. --");
+                throw new InvalidInputException("Please enter a value");
             }
 
             if (String.valueOf(input.charAt(0)).equals(ADD)) {

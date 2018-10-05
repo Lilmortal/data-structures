@@ -2,6 +2,7 @@ package com.interview.questions;
 
 public class ExitException extends Exception {
     public ExitException() {
+        super();
     }
 
     public ExitException(String message) {

@@ -29,7 +29,7 @@ public class InterviewQuestions {
                         algorithm = resource.getAlgorithm(input);
                     } catch (InvalidInputException e) {
                         System.out.println();
-                        System.out.println("-- Input is invalid. Please enter a valid input. --");
+                        System.out.println("-- Input is invalid. Please enter a valid algorithm number. --");
                         System.out.println();
                         printIntro();
                         continue;
@@ -44,8 +44,8 @@ public class InterviewQuestions {
                         printIntro();
                     }
                 } else {
+                    System.out.println("-- Please enter an algorithm number. --");
                     System.out.println();
-                    System.out.println("-- Please enter an input. --");
                     printIntro();
                 }
             } catch (Exception e) {
