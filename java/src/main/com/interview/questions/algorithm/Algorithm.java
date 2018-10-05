@@ -6,6 +6,7 @@ import com.interview.questions.InvalidInputException;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.util.Objects;
 
 public abstract class Algorithm {
     protected abstract void printInstructions();
@@ -40,7 +41,9 @@ public abstract class Algorithm {
                         continue;
                     }
 
-                    System.out.println(result);
+                    if (Objects.nonNull(result)) {
+                        System.out.println(result);
+                    }
                 } else {
                     System.out.println("-- Please enter an input. --");
                     System.out.println();

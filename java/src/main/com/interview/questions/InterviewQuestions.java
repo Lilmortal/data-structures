@@ -29,7 +29,7 @@ public class InterviewQuestions {
                         algorithm = resource.getAlgorithm(input);
                     } catch (InvalidInputException e) {
                         System.out.println();
-                        System.out.println("-- Input is invalid. Please enter a valid algorithm number. --");
+                        System.out.println("-- SortInput is invalid. Please enter a valid algorithm number. --");
                         System.out.println();
                         printIntro();
                         continue;

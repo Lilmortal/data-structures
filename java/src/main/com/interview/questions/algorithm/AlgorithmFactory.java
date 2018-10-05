@@ -9,48 +9,39 @@ import com.interview.questions.sort.SortIntroAlgorithm;
 import com.interview.questions.sort.SortResource;
 import com.interview.questions.stack.StackAlgorithm;
 import com.interview.questions.tree.TreeAlgorithm;
+import com.interview.questions.tree.TreeIntroAlgorithm;
 
 public class AlgorithmFactory {
     public Algorithm getAlgorithm(String algorithmName) throws InvalidInputException {
-        Algorithm algorithm;
-
         switch (algorithmName) {
             case "linked list": {
-                algorithm = new LinkedListAlgorithm();
-                break;
+                return new LinkedListAlgorithm();
             }
 
             case "queue": {
-                algorithm = new QueueAlgorithm();
-                break;
+                return new QueueAlgorithm();
             }
 
             case "stack": {
-                algorithm = new StackAlgorithm();
-                break;
+                return new StackAlgorithm();
             }
 
             case "hash table": {
-                algorithm = new HashTableAlgorithm();
-                break;
+                return new HashTableAlgorithm();
             }
 
             case "sorting": {
                 SortResource sortResource = new SortResource();
-                algorithm = new SortIntroAlgorithm(sortResource);
-                break;
+                return new SortIntroAlgorithm(sortResource);
             }
 
             case "tree": {
-                algorithm = new TreeAlgorithm();
-                break;
+                return new TreeIntroAlgorithm();
             }
 
             default: {
                 throw new InvalidInputException();
             }
         }
-
-        return algorithm;
     }
 }

@@ -5,9 +5,6 @@ import com.interview.questions.InvalidInputException;
 import com.interview.questions.algorithm.Algorithm;
 
 import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Arrays;
-import java.util.Objects;
 
 public class SortIntroAlgorithm extends Algorithm {
     private SortResource sortResource;
@@ -23,7 +20,7 @@ public class SortIntroAlgorithm extends Algorithm {
 
     @Override
     public String execute(String input, BufferedReader br) throws ExitException, InvalidInputException {
-        if (Input.isValid(input)) {
+        if (SortInput.isValid(input)) {
             SortAlgorithm sortAlgorithm = new SortAlgorithm(this.sortResource, input);
             sortAlgorithm.run(br);
             return null;

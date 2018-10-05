@@ -5,7 +5,7 @@ import com.interview.questions.InvalidInputException;
 import java.util.Arrays;
 import java.util.Objects;
 
-public class MinHeap implements Heap {
+public class MinHeap implements Tree {
     private int capacity;
 
     private Double[] heap;
@@ -73,6 +73,11 @@ public class MinHeap implements Heap {
     @Override
     public boolean isEmpty() {
         return this.leafPos <= 0;
+    }
+
+    @Override
+    public String getName() {
+        return "Min Heap";
     }
 
     @Override

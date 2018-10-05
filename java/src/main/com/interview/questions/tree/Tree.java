@@ -2,7 +2,7 @@ package com.interview.questions.tree;
 
 import com.interview.questions.InvalidInputException;
 
-public interface Heap {
+public interface Tree {
     void insert(Double value);
 
     Double pop() throws InvalidInputException;
@@ -14,4 +14,6 @@ public interface Heap {
     int size();
 
     boolean isEmpty();
+
+    String getName();
 }

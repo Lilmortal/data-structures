@@ -5,44 +5,35 @@ import com.interview.questions.InvalidInputException;
 public class AlgorithmResource {
     public Algorithm getAlgorithm(String input) throws InvalidInputException {
         AlgorithmFactory algorithmFactory = new AlgorithmFactory();
-        Algorithm algorithm;
 
         switch (input) {
             case "1": {
-                algorithm = algorithmFactory.getAlgorithm("linked list");
-                break;
+                return algorithmFactory.getAlgorithm("linked list");
             }
 
             case "2": {
-                algorithm = algorithmFactory.getAlgorithm("queue");
-                break;
+                return algorithmFactory.getAlgorithm("queue");
             }
 
             case "3": {
-                algorithm = algorithmFactory.getAlgorithm("stack");
-                break;
+                return algorithmFactory.getAlgorithm("stack");
             }
 
             case "4": {
-                algorithm = algorithmFactory.getAlgorithm("hash table");
-                break;
+                return algorithmFactory.getAlgorithm("hash table");
             }
 
             case "5": {
-                algorithm = algorithmFactory.getAlgorithm("sorting");
-                break;
+                return algorithmFactory.getAlgorithm("sorting");
             }
 
             case "6": {
-                algorithm = algorithmFactory.getAlgorithm("tree");
-                break;
+                return algorithmFactory.getAlgorithm("tree");
             }
 
             default: {
                 throw new InvalidInputException("Invalid input");
             }
         }
-
-        return algorithm;
     }
 }

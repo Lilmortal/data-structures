@@ -2,7 +2,7 @@ package com.interview.questions.tree;
 
 import com.interview.questions.InvalidInputException;
 
-public class BinarySearchTree implements Tree {
+public class RedBlackTree implements Tree {
     @Override
     public void insert(Double value) {
 
@@ -35,6 +35,6 @@ public class BinarySearchTree implements Tree {
 
     @Override
     public String getName() {
-        return "Binary Search Tree";
+        return "Red Black Tree";
     }
 }
