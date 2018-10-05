@@ -40,6 +40,8 @@ public class InterviewQuestions {
                             System.out.println(algorithm.getResult(br));
                         } catch (ExitException e) {
                             // do nothing, it is exited.
+                        } catch (Exception e) {
+                            throw new RuntimeException(e);
                         }
                         printIntro();
                     }
@@ -61,7 +63,7 @@ public class InterviewQuestions {
         System.out.println("1. Linked List");
         System.out.println("2. Queue");
         System.out.println("3. Stack");
-        System.out.println("4. Hash Table (IN PROGRESS)");
+        System.out.println("4. Hash Table");
         System.out.println("5. Sorting");
         System.out.println("6. Trees (IN PROGRESS)");
         System.out.println("7. Graphs (IN PROGRESS)");

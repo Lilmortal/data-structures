@@ -33,7 +33,7 @@ public class SortResource {
                 break;
             }
             default: {
-                throw new InvalidInputException("Invalid input.");
+                throw new InvalidInputException("Invalid input");
             }
         }
     }

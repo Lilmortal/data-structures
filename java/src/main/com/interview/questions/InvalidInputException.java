@@ -1,37 +1,22 @@
 package com.interview.questions;
 
 public class InvalidInputException extends Exception {
-    private String error;
-
     public InvalidInputException() {
-        super();
     }
 
-    public InvalidInputException(String error) {
-        this.error = error;
-    }
-
-    public InvalidInputException(String message, String error) {
+    public InvalidInputException(String message) {
         super(message);
-        this.error = error;
     }
 
-    public InvalidInputException(String message, Throwable cause, String error) {
+    public InvalidInputException(String message, Throwable cause) {
         super(message, cause);
-        this.error = error;
     }
 
-    public InvalidInputException(Throwable cause, String error) {
+    public InvalidInputException(Throwable cause) {
         super(cause);
-        this.error = error;
     }
 
-    public InvalidInputException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace, String error) {
+    public InvalidInputException(String message, Throwable cause, boolean enableSuppression, boolean writableStackTrace) {
         super(message, cause, enableSuppression, writableStackTrace);
-        this.error = error;
-    }
-
-    public String getError() {
-        return error;
     }
 }
