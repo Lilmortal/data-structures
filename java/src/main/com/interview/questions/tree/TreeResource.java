@@ -2,8 +2,6 @@ package com.interview.questions.tree;
 
 import com.interview.questions.InvalidInputException;
 
-import java.util.Arrays;
-
 public class TreeResource {
     private TreeFactory treeFactory;
 

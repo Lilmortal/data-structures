@@ -3,9 +3,13 @@ package com.interview.questions.algorithm;
 import com.interview.questions.InvalidInputException;
 
 public class AlgorithmResource {
-    public Algorithm getAlgorithm(String input) throws InvalidInputException {
-        AlgorithmFactory algorithmFactory = new AlgorithmFactory();
+    private AlgorithmFactory algorithmFactory;
 
+    public AlgorithmResource(AlgorithmFactory algorithmFactory) {
+        this.algorithmFactory = algorithmFactory;
+    }
+
+    public Algorithm getAlgorithm(String input) throws InvalidInputException {
         switch (input) {
             case "1": {
                 return algorithmFactory.getAlgorithm("linked list");

@@ -1,6 +1,7 @@
 package com.interview.questions;
 
 import com.interview.questions.algorithm.Algorithm;
+import com.interview.questions.algorithm.AlgorithmFactory;
 import com.interview.questions.algorithm.AlgorithmResource;
 
 import java.io.BufferedReader;
@@ -17,7 +18,8 @@ public class InterviewQuestions {
         printIntro();
 
         String input;
-        AlgorithmResource resource = new AlgorithmResource();
+        AlgorithmFactory algorithmFactory = new AlgorithmFactory();
+        AlgorithmResource resource = new AlgorithmResource(algorithmFactory);
         Algorithm algorithm;
 
         while (true) {

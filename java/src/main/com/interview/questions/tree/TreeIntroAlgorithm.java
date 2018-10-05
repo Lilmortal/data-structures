@@ -7,6 +7,12 @@ import com.interview.questions.algorithm.Algorithm;
 import java.io.BufferedReader;
 
 public class TreeIntroAlgorithm extends Algorithm {
+    private TreeResource treeResource;
+
+    public TreeIntroAlgorithm(TreeResource treeResource) {
+        this.treeResource = treeResource;
+    }
+
     @Override
     protected void printInstructions() {
         System.out.println("Which tree algorithm you want to test, type the number:");
@@ -19,9 +25,6 @@ public class TreeIntroAlgorithm extends Algorithm {
 
     @Override
     protected String execute(String input, BufferedReader br) throws ExitException, InvalidInputException {
-        TreeFactory treeFactory = new TreeFactory();
-        TreeResource treeResource = new TreeResource(treeFactory);
-
         Tree tree = treeResource.getTree(input);
 
         try {

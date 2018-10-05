@@ -5,32 +5,22 @@ import com.interview.questions.InvalidInputException;
 import java.util.Arrays;
 
 public class SortResource {
-    private Sort sort;
+    private SortFactory sortFactory;
 
-    public Double[] getSortedUserInput(String input) {
-        Double[] unsortedList = Arrays.stream(input.split(" ")).map(Double::parseDouble).toArray(Double[]::new);
-        return sort.sort(unsortedList);
+    public SortResource(SortFactory sortFactory) {
+        this.sortFactory = sortFactory;
     }
 
-    public String getSortName() {
-        return sort.getName();
-    }
-
-    public void setSort(String sort) throws InvalidInputException {
-        SortFactory sortFactory = new SortFactory();
-
+    public Sort getSort(String sort) throws InvalidInputException {
         switch (sort) {
             case "1": {
-                this.sort = sortFactory.getSort("insertion");
-                break;
+                return sortFactory.getSort("insertion");
             }
             case "2": {
-                this.sort = sortFactory.getSort("merge");
-                break;
+                return sortFactory.getSort("merge");
             }
             case "3": {
-                this.sort = sortFactory.getSort("quick");
-                break;
+                return sortFactory.getSort("quick");
             }
             default: {
                 throw new InvalidInputException("Invalid input");
