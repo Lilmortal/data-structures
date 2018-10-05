@@ -28,21 +28,28 @@ public class InterviewQuestions {
                     try {
                         algorithm = resource.getAlgorithm(input);
                     } catch (InvalidInputException e) {
-                        System.out.println("Input is invalid. Please enter a valid input.");
+                        System.out.println();
+                        System.out.println("-- Input is invalid. Please enter a valid input. --");
+                        System.out.println();
+                        printIntro();
                         continue;
                     }
 
                     if (!Objects.isNull(algorithm)) {
                         try {
-                            algorithm.run(br);
+                            System.out.println(algorithm.getResult(br));
                         } catch (ExitException e) {
-                            printIntro();
+                            // do nothing, it is exited.
                         }
+                        printIntro();
                     }
                 } else {
-                    System.out.println("Please enter an input.");
+                    System.out.println();
+                    System.out.println("-- Please enter an input. --");
+                    printIntro();
                 }
-            } catch (IOException e) {
+            } catch (Exception e) {
+                System.out.println();
                 System.out.println(e.getMessage());
                 System.exit(1);
             }

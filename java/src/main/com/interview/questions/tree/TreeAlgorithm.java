@@ -13,7 +13,7 @@ public class TreeAlgorithm extends Algorithm {
     }
 
     @Override
-    public void execute(String input, BufferedReader br) throws ExitException, IOException {
-
+    public String execute(String input, BufferedReader br) throws ExitException {
+        return null;
     }
 }

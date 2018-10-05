@@ -5,11 +5,11 @@ import com.interview.questions.InvalidInputException;
 import com.interview.questions.hashTable.HashTableAlgorithm;
 import com.interview.questions.linkedList.LinkedListAlgorithm;
 import com.interview.questions.queue.QueueAlgorithm;
-import com.interview.questions.sort.SortAlgorithm;
+import com.interview.questions.sort.SortIntroAlgorithm;
+import com.interview.questions.sort.SortResource;
 import com.interview.questions.stack.StackAlgorithm;
 
 public class AlgorithmFactory {
-
     public Algorithm getAlgorithm(String algorithmName) {
         Algorithm algorithm;
 
@@ -35,7 +35,8 @@ public class AlgorithmFactory {
             }
 
             case "sorting": {
-                algorithm = new SortAlgorithm();
+                SortResource sortResource = new SortResource();
+                algorithm = new SortIntroAlgorithm(sortResource);
                 break;
             }
 

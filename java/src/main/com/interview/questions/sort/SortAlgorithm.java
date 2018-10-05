@@ -10,43 +10,33 @@ import java.util.Arrays;
 import java.util.Objects;
 
 public class SortAlgorithm extends Algorithm {
-    private SortResource sortResource = new SortResource();
+    private SortResource sortResource;
+
+    private String input;
+
+    public SortAlgorithm(SortResource sortResource, String input) {
+        this.sortResource = sortResource;
+        this.input = input;
+    }
 
     @Override
     protected void printInstructions() {
-        System.out.println("Enter a list of numbers with spaces in between, e.g. 10 20 30.");
+        System.out.println();
+        System.out.println("Which sorting algorithm you want to test, type the number:");
+        System.out.println("1. Insertion Sort");
+        System.out.println("2. Merge Sort");
+        System.out.println("3. Quick Sort");
     }
 
     @Override
-    public void execute(String input, BufferedReader br) throws ExitException, IOException {
-        if (Input.isValid(input)) {
-            String sortInput = null;
-            while (Objects.isNull(sortInput)) {
-                System.out.println();
-                System.out.println("Which sorting algorithm you want to test, type the number:");
-                System.out.println("1. Insertion Sort");
-                System.out.println("2. Merge Sort");
-                System.out.println("3. Quick Sort");
+    public String execute(String input, BufferedReader br) {
+        sortResource.setSort(input);
 
-                sortInput = br.readLine();
-                try {
-                    sortResource.setSort(sortInput);
-
-                    System.out.println();
-                    System.out.println(sortResource.getSortName() + " result:");
-                    System.out.println(Arrays.toString(sortResource.getSortedUserInput(input)));
-                    System.out.println();
-                } catch (InvalidInputException e) {
-                    System.out.println("That is the wrong input.");
-                    sortInput = null;
-                } catch (Exception e) {
-                    System.out.println(e);
-                }
-            }
-        } else {
-            System.out.println("Please enter valid input.");
-        }
+        StringBuilder sb = new StringBuilder();
+        sb.append("\n");
+        sb.append(sortResource.getSortName() + " result:\n");
+        sb.append(Arrays.toString(sortResource.getSortedUserInput(this.input)) + "\n");
+        sb.append("\n");
+        return sb.toString();
     }
 }
-
-
