@@ -2,10 +2,13 @@ package com.interview.questions.tree;
 
 import com.interview.questions.InvalidInputException;
 
-public class BinarySearchTree implements Tree {
-    @Override
-    public void insert(Double value) {
+import java.util.Objects;
 
+public class BinarySearchTree extends BaseTree implements Tree {
+    @Override
+    public void insert(Double value) throws InvalidInputException {
+        this.resizeCapacityIfFull(2);
+        insert(value, 0);
     }
 
     @Override
@@ -14,27 +17,21 @@ public class BinarySearchTree implements Tree {
     }
 
     @Override
-    public Double first() {
-        return null;
-    }
-
-    @Override
-    public Double last() {
-        return null;
-    }
-
-    @Override
-    public int size() {
-        return 0;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return false;
-    }
-
-    @Override
     public String getName() {
         return "Binary Search Tree";
+    }
+
+    private void insert(Double value, int pos) throws InvalidInputException {
+        int leftChildPos = getLeftChildPos(pos);
+        int rightChildPos = getRightChildPos(pos);
+
+        Double posValue = this.trees[pos];
+        if (Objects.isNull(posValue)) {
+            this.trees[pos] = value;
+        } else if (value <= posValue) {
+            insert(value, leftChildPos);
+        } else if (value > posValue) {
+            insert(value, rightChildPos);
+        }
     }
 }
