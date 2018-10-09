@@ -24,7 +24,7 @@ public class TreeAlgorithm extends Algorithm {
     }
 
     @Override
-    public String execute(String input, BufferedReader br) throws ExitException, InvalidInputException {
+    public String execute(String input, BufferedReader br) throws InvalidInputException {
         if (String.valueOf(input.charAt(0)).equals(ADD)) {
             if (input.length() <= 1) {
                 throw new InvalidInputException("Press enter a number to add into the tree");

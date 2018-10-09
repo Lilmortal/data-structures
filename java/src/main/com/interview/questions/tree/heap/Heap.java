@@ -1,17 +1,20 @@
-package com.interview.questions.tree;
+package com.interview.questions.tree.heap;
 
 import com.interview.questions.InvalidInputException;
+import com.interview.questions.tree.BaseTree;
 
 import java.util.Objects;
 
 public abstract class Heap extends BaseTree {
-    public void insert(Double value) {
-        int parentPos = getParentPos(this.leafPos);
-        int rightLeafChildPos = getRightChildPos(this.leafPos);
+    protected int leafPos;
 
-        if (rightLeafChildPos > capacity) {
-            resizeHeap();
-        }
+    public Heap() {
+        this.leafPos = 0;
+    }
+
+    @Override
+    protected void insertValue(Double value) {
+        int parentPos = getParentPos(this.leafPos);
 
         if (this.leafPos == 0) {
             this.trees[0] = value;
@@ -39,13 +42,14 @@ public abstract class Heap extends BaseTree {
         return valueToBePopped;
     }
 
-    protected void resizeHeap() {
-        this.capacity *= this.capacity;
-        Double[] tempHeap = this.trees;
-        this.trees = new Double[this.capacity];
-        for (int i = 0; i < this.trees.length; i++) {
-            this.trees[i] = tempHeap[i];
-        }
+    @Override
+    public Double last() {
+        return this.trees[this.leafPos == 0 ? 0 : this.leafPos - 1];
+    }
+
+    @Override
+    public boolean isEmpty() {
+        return this.leafPos <= 0;
     }
 
     protected abstract void heapifyUp(int leafPos);

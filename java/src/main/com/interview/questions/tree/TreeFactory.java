@@ -1,6 +1,8 @@
 package com.interview.questions.tree;
 
 import com.interview.questions.InvalidInputException;
+import com.interview.questions.tree.heap.MaxHeap;
+import com.interview.questions.tree.heap.MinHeap;
 
 public class TreeFactory {
     public Tree getTree(String tree) throws InvalidInputException {

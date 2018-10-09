@@ -1,17 +1,20 @@
-package com.interview.questions.tree;
+package com.interview.questions.tree.heap;
+
+import com.interview.questions.tree.Tree;
+import com.interview.questions.tree.heap.Heap;
 
 import java.util.Objects;
 
-public class MinHeap extends Heap implements Tree {
+public class MaxHeap extends Heap implements Tree {
     @Override
     public String getName() {
-        return "Min Heap";
+        return "Max Heap";
     }
 
     @Override
     protected void heapifyUp(int pos) {
         int parentPos = getParentPos(pos);
-        if (isInBounds(parentPos) && Objects.nonNull(this.trees[parentPos]) && Objects.nonNull(this.trees[pos]) && this.trees[parentPos] > this.trees[pos]) {
+        if (isInBounds(parentPos) && Objects.nonNull(this.trees[parentPos]) && Objects.nonNull(this.trees[pos]) && this.trees[parentPos] < this.trees[pos]) {
             swap(parentPos, pos);
             heapifyUp(parentPos);
         }
@@ -25,9 +28,9 @@ public class MinHeap extends Heap implements Tree {
         int currentPos = -1;
         if (isInBounds(leftChildPos) && isInBounds(rightChildPos)) {
             if (Objects.nonNull(this.trees[leftChildPos]) && Objects.nonNull(this.trees[rightChildPos])) {
-                if (this.trees[leftChildPos] <= this.trees[rightChildPos]) {
+                if (this.trees[leftChildPos] >= this.trees[rightChildPos]) {
                     currentPos = leftChildPos;
-                } else if (this.trees[leftChildPos] > this.trees[rightChildPos]) {
+                } else if (this.trees[leftChildPos] < this.trees[rightChildPos]) {
                     currentPos = rightChildPos;
                 }
             } else if (Objects.nonNull(this.trees[leftChildPos])) {
@@ -37,7 +40,7 @@ public class MinHeap extends Heap implements Tree {
             }
         }
 
-        if (isInBounds(currentPos) && Objects.nonNull(this.trees[currentPos]) && Objects.nonNull(this.trees[pos]) && this.trees[currentPos] < this.trees[pos]) {
+        if (isInBounds(currentPos) && Objects.nonNull(this.trees[currentPos]) && Objects.nonNull(this.trees[pos]) && this.trees[currentPos] > this.trees[pos]) {
             swap(currentPos, pos);
             heapifyDown(currentPos);
         }

@@ -6,13 +6,17 @@ import java.util.Objects;
 
 public class BinarySearchTree extends BaseTree implements Tree {
     @Override
-    public void insert(Double value) throws InvalidInputException {
-        this.resizeCapacityIfFull(2);
+    protected void insertValue(Double value) throws InvalidInputException {
         insert(value, 0);
     }
 
     @Override
     public Double pop() throws InvalidInputException {
+        // if no children, only delete node
+        // if have children, swap right, or else left
+        // if have multiple recursive children, go to right child, then go all the way to the left and swap them
+
+//        if (this.trees[])
         return null;
     }
 
