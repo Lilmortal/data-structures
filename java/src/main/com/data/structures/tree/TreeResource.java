@@ -12,18 +12,12 @@ public class TreeResource {
     public Tree getTree(String tree) throws InvalidInputException {
         switch (tree) {
             case "1": {
-                return treeFactory.getTree("minHeap");
-            }
-            case "2": {
-                return treeFactory.getTree("maxHeap");
-            }
-            case "3": {
                 return treeFactory.getTree("binarySearch");
             }
-            case "4": {
+            case "2": {
                 return treeFactory.getTree("redBlack");
             }
-            case "5": {
+            case "3": {
                 return treeFactory.getTree("avl");
             }
             default: {

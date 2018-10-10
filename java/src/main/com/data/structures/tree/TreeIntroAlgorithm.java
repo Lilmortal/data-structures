@@ -16,11 +16,9 @@ public class TreeIntroAlgorithm extends Algorithm {
     @Override
     protected void printInstructions() {
         System.out.println("Which tree algorithm you want to test, type the number:");
-        System.out.println("1. Min heap");
-        System.out.println("2. Max heap");
-        System.out.println("3. Binary search trees (IN PROGRESS)");
-        System.out.println("4. Red black trees (IN PROGRESS)");
-        System.out.println("5. AVL (IN PROGRESS)");
+        System.out.println("1. Binary search heaps (IN PROGRESS)");
+        System.out.println("2. Red black heaps (IN PROGRESS)");
+        System.out.println("3. AVL (IN PROGRESS)");
     }
 
     @Override

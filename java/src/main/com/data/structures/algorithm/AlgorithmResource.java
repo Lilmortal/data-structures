@@ -32,6 +32,10 @@ public class AlgorithmResource {
             }
 
             case "6": {
+                return algorithmFactory.getAlgorithm("heap");
+            }
+
+            case "7": {
                 return algorithmFactory.getAlgorithm("tree");
             }
 

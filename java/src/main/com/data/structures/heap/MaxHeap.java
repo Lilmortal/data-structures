@@ -1,4 +1,4 @@
-package com.data.structures.tree.heap;
+package com.data.structures.heap;
 
 import java.util.Objects;
 
@@ -11,7 +11,7 @@ public class MaxHeap extends BaseHeap {
     @Override
     protected void heapifyUp(int pos) {
         int parentPos = getParentPos(pos);
-        if (isInBounds(parentPos) && Objects.nonNull(this.trees[parentPos]) && Objects.nonNull(this.trees[pos]) && this.trees[parentPos] < this.trees[pos]) {
+        if (isInBounds(parentPos) && Objects.nonNull(this.heaps[parentPos]) && Objects.nonNull(this.heaps[pos]) && this.heaps[parentPos] < this.heaps[pos]) {
             swap(parentPos, pos);
             heapifyUp(parentPos);
         }
@@ -24,20 +24,20 @@ public class MaxHeap extends BaseHeap {
 
         int currentPos = -1;
         if (isInBounds(leftChildPos) && isInBounds(rightChildPos)) {
-            if (Objects.nonNull(this.trees[leftChildPos]) && Objects.nonNull(this.trees[rightChildPos])) {
-                if (this.trees[leftChildPos] >= this.trees[rightChildPos]) {
+            if (Objects.nonNull(this.heaps[leftChildPos]) && Objects.nonNull(this.heaps[rightChildPos])) {
+                if (this.heaps[leftChildPos] >= this.heaps[rightChildPos]) {
                     currentPos = leftChildPos;
-                } else if (this.trees[leftChildPos] < this.trees[rightChildPos]) {
+                } else if (this.heaps[leftChildPos] < this.heaps[rightChildPos]) {
                     currentPos = rightChildPos;
                 }
-            } else if (Objects.nonNull(this.trees[leftChildPos])) {
+            } else if (Objects.nonNull(this.heaps[leftChildPos])) {
                 currentPos = leftChildPos;
-            } else if (Objects.nonNull(this.trees[rightChildPos])) {
+            } else if (Objects.nonNull(this.heaps[rightChildPos])) {
                 currentPos = rightChildPos;
             }
         }
 
-        if (isInBounds(currentPos) && Objects.nonNull(this.trees[currentPos]) && Objects.nonNull(this.trees[pos]) && this.trees[currentPos] > this.trees[pos]) {
+        if (isInBounds(currentPos) && Objects.nonNull(this.heaps[currentPos]) && Objects.nonNull(this.heaps[pos]) && this.heaps[currentPos] > this.heaps[pos]) {
             swap(currentPos, pos);
             heapifyDown(currentPos);
         }

@@ -16,7 +16,7 @@ public class BinarySearchTree extends BaseTree {
         // if have children, swap right, or else left
         // if have multiple recursive children, go to right child, then go all the way to the left and swap them
 
-//        if (this.trees[])
+//        if (this.heaps[])
         return null;
     }
 

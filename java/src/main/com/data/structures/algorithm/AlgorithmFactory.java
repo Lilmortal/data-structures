@@ -2,6 +2,9 @@ package com.data.structures.algorithm;
 
 import com.data.structures.InvalidInputException;
 import com.data.structures.hashTable.HashTableAlgorithm;
+import com.data.structures.heap.HeapFactory;
+import com.data.structures.heap.HeapIntroAlgorithm;
+import com.data.structures.heap.HeapResource;
 import com.data.structures.linkedList.LinkedListAlgorithm;
 import com.data.structures.queue.QueueAlgorithm;
 import com.data.structures.sort.SortFactory;
@@ -37,6 +40,11 @@ public class AlgorithmFactory {
                 return new SortIntroAlgorithm(sortResource);
             }
 
+            case "heap": {
+                HeapFactory heapFactory = new HeapFactory();
+                HeapResource heapResource = new HeapResource(heapFactory);
+                return new HeapIntroAlgorithm(heapResource);
+            }
             case "tree": {
                 TreeFactory treeFactory = new TreeFactory();
                 TreeResource treeResource = new TreeResource(treeFactory);

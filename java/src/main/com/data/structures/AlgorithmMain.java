@@ -66,7 +66,8 @@ public class AlgorithmMain {
         System.out.println("3. Stack");
         System.out.println("4. Hash Table");
         System.out.println("5. Sorting");
-        System.out.println("6. Trees");
-        System.out.println("7. Graphs (IN PROGRESS)");
+        System.out.println("6. Heap");
+        System.out.println("7. Trees");
+        System.out.println("8. Graphs (IN PROGRESS)");
     }
 }

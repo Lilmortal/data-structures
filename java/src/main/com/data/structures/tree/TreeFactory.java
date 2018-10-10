@@ -1,18 +1,12 @@
 package com.data.structures.tree;
 
 import com.data.structures.InvalidInputException;
-import com.data.structures.tree.heap.MaxHeap;
-import com.data.structures.tree.heap.MinHeap;
+import com.data.structures.heap.MaxHeap;
+import com.data.structures.heap.MinHeap;
 
 public class TreeFactory {
     public Tree getTree(String tree) throws InvalidInputException {
         switch (tree) {
-            case "minHeap": {
-                return new MinHeap();
-            }
-            case "maxHeap": {
-                return new MaxHeap();
-            }
             case "binarySearch": {
                 return new BinarySearchTree();
             }
