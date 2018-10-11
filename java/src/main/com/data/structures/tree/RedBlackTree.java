@@ -4,7 +4,11 @@ import com.data.structures.InvalidInputException;
 
 public class RedBlackTree extends BaseTree {
     @Override
-    public Double remove(Double value) throws InvalidInputException {
+    public void remove(Double value) throws InvalidInputException {
+    }
+
+    @Override
+    public Double get(int pos) {
         return null;
     }
 

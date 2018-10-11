@@ -6,17 +6,18 @@ import java.util.Objects;
 
 public class BinarySearchTree extends BaseTree {
     @Override
-    protected void insertValue(Double value) throws InvalidInputException {
+    protected void insertValue(Double value) {
         insert(value, 0);
     }
 
     @Override
-    public Double remove(Double value) throws InvalidInputException {
-        // if no children, only delete node
-        // if have children, swap right, or else left
-        // if have multiple recursive children, go to right child, then go all the way to the left and swap them
+    public void remove(Double value) throws InvalidInputException {
+        int pos = getValuePosition(value, 0);
+        remove(value, pos);
+    }
 
-//        if (this.heaps[])
+    @Override
+    public Double get(int pos) {
         return null;
     }
 
@@ -36,6 +37,45 @@ public class BinarySearchTree extends BaseTree {
             insert(value, leftChildPos);
         } else if (value > posValue) {
             insert(value, rightChildPos);
+        }
+    }
+
+    private void remove(Double value, int pos) {
+        this.trees[pos] = null;
+
+        int leftChildPos = getLeftChildPos(pos);
+        int rightChildPos = getRightChildPos(pos);
+
+        if (this.trees[rightChildPos] != null) {
+            int mostLeftChildPos = getMostLeftestChild(rightChildPos);
+            swap(mostLeftChildPos, pos);
+        } else if (this.trees[leftChildPos] != null) {
+            swap(leftChildPos, pos);
+        }
+    }
+
+    private int getValuePosition(Double value, int pos) throws InvalidInputException {
+        int leftChildPos = getLeftChildPos(pos);
+        int rightChildPos = getRightChildPos(pos);
+
+        if (this.trees[pos] != null && this.trees[pos].equals(value)) {
+            return pos;
+        } else if (this.trees[leftChildPos] != null && value <= this.trees[leftChildPos]) {
+            return getValuePosition(value, leftChildPos);
+        } else if (this.trees[rightChildPos] != null && value >= this.trees[rightChildPos]) {
+            return getValuePosition(value, rightChildPos);
+        } else {
+            throw new InvalidInputException("Something is not right...");
+        }
+    }
+
+    private int getMostLeftestChild(int pos) {
+        int leftChildPos = getLeftChildPos(pos);
+
+        if (this.trees[leftChildPos] != null) {
+            return getMostLeftestChild(leftChildPos);
+        } else {
+            return pos;
         }
     }
 }

@@ -5,7 +5,9 @@ import com.data.structures.InvalidInputException;
 public interface Tree {
     void insert(Double value) throws InvalidInputException;
 
-    Double remove(Double value) throws InvalidInputException;
+    void remove(Double value) throws InvalidInputException;
+
+    Double get(int pos);
 
     Double first();
 

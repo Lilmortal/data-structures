@@ -25,7 +25,6 @@ public class HeapIntroAlgorithm extends Algorithm {
     protected String execute(String input, BufferedReader br) throws InvalidInputException {
         Heap heap = heapResource.getHeap(input);
 
-        // TODO: Notify user if it is heap, can only remove()
         try {
             HeapAlgorithm heapAlgorithm = new HeapAlgorithm(heap);
             heapAlgorithm.run(br);

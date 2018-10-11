@@ -19,7 +19,7 @@ public class TreeAlgorithm extends Algorithm {
     @Override
     protected void printInstructions() {
         System.out.println("Press 'a' followed by a number to add that to the tree. e.g. (a20)");
-        System.out.println("Press 'r' to remove an item from the tree.");
+        System.out.println("Press 'r' followed by a number to remove that item from the tree. e.g. (r20)");
     }
 
     @Override
