@@ -2,8 +2,6 @@ package com.data.structures.tree;
 
 import com.data.structures.InvalidInputException;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
 
 public class BinarySearchTree extends BaseTree {
@@ -15,8 +13,7 @@ public class BinarySearchTree extends BaseTree {
     @Override
     public void remove(Double value) throws InvalidInputException {
         int pos = getValuePosition(value, 0);
-        // Test 10,5,30,50,35,40,39 and remove 30
-        remove(value, pos);
+        remove(pos);
     }
 
     @Override
@@ -43,7 +40,7 @@ public class BinarySearchTree extends BaseTree {
         }
     }
 
-    private void remove(Double value, int pos) {
+    private void remove(int pos) {
         this.trees[pos] = null;
 
         int leftChildPos = getLeftChildPos(pos);
@@ -53,8 +50,11 @@ public class BinarySearchTree extends BaseTree {
             int mostLeftChildPos = getMostLeftestChild(rightChildPos);
             swap(mostLeftChildPos, pos);
 
-            Double[] test = new Double[100];
-            Double[] subTreeToBeMoved = getPreTraversal(test, mostLeftChildPos);
+            int mostLeftChildRightChildPos = getRightChildPos(mostLeftChildPos);
+            if (this.trees[mostLeftChildRightChildPos] != null) {
+                Double[] subTree = getSubTreeViaPreOrderTraversal(new Double[this.trees.length], mostLeftChildRightChildPos, 0);
+                moveSubTreeToLeftChild(subTree, mostLeftChildPos, 0);
+            }
 
         } else if (this.trees[leftChildPos] != null) {
             swap(leftChildPos, pos);
@@ -86,23 +86,43 @@ public class BinarySearchTree extends BaseTree {
         }
     }
 
-    private Double[] getPreTraversal(Double[] array, int pos) {
+    private Double[] getSubTreeViaPreOrderTraversal(Double[] array, int pos, int newArrayPos) {
         int leftChildPos = getLeftChildPos(pos);
         int rightChildPos = getRightChildPos(pos);
 
+        int newLeftChildPos = getLeftChildPos(newArrayPos);
+        int newRightChildPos = getRightChildPos(newArrayPos);
+
         if (this.trees[pos] != null) {
-            array[pos] = this.trees[pos];
+            array[newArrayPos] = this.trees[pos];
             this.trees[pos] = null;
         }
 
         if (this.trees[leftChildPos] != null) {
-            array = getPreTraversal(array, leftChildPos);
+            array = getSubTreeViaPreOrderTraversal(array, leftChildPos, newLeftChildPos);
         }
 
         if (this.trees[rightChildPos] != null) {
-            array = getPreTraversal(array, rightChildPos);
+            array = getSubTreeViaPreOrderTraversal(array, rightChildPos, newRightChildPos);
         }
 
         return array;
+    }
+
+    private void moveSubTreeToLeftChild(Double[] subTree, int pos, int newArrayPos) {
+        int leftChildPos = getLeftChildPos(pos);
+        int rightChildPos = getRightChildPos(pos);
+
+        int newLeftChildPos = getLeftChildPos(newArrayPos);
+        int newRightChildPos = getRightChildPos(newArrayPos);
+
+        this.trees[pos] = subTree[newArrayPos];
+        if (subTree[newLeftChildPos] != null) {
+            moveSubTreeToLeftChild(subTree, leftChildPos, newLeftChildPos);
+        }
+
+        if (subTree[newRightChildPos] != null) {
+            moveSubTreeToLeftChild(subTree, rightChildPos, newRightChildPos);
+        }
     }
 }

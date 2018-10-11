@@ -16,8 +16,8 @@ public class TreeIntroAlgorithm extends Algorithm {
     @Override
     protected void printInstructions() {
         System.out.println("Which tree algorithm you want to test, type the number:");
-        System.out.println("1. Binary search heaps (IN PROGRESS)");
-        System.out.println("2. Red black heaps (IN PROGRESS)");
+        System.out.println("1. Binary search tree");
+        System.out.println("2. Red black tree (IN PROGRESS)");
         System.out.println("3. AVL (IN PROGRESS)");
     }
 
