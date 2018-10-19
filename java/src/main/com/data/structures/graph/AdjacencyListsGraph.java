@@ -2,49 +2,49 @@ package com.data.structures.graph;
 
 import java.util.Collection;
 
-public class AdjacencyListsGraph<T> implements Graph<T> {
+public class AdjacencyListsGraph implements Graph<Integer> {
     @Override
-    public boolean contains(T item) {
+    public boolean contains(Integer item) {
         return false;
     }
 
     @Override
-    public void addVertex(T vertex) {
+    public void addVertex(Integer vertex) {
 
     }
 
     @Override
-    public boolean areAdjacent(T a, T b) {
+    public boolean areAdjacent(Integer a, Integer b) {
         return false;
     }
 
     @Override
-    public void removeVertex(T vertex) {
+    public void removeVertex(Integer vertex) {
 
     }
 
     @Override
-    public void addEdge(T from, T to, int weight) {
+    public void addEdge(Integer from, Integer to, Integer weight) {
 
     }
 
     @Override
-    public void removeEdge(T from, T to) {
+    public void removeEdge(Integer from, Integer to) {
 
     }
 
     @Override
-    public Collection<T> getNeighboursForT(T vertex) {
+    public Collection<Integer> getNeighboursForT(Integer vertex) {
         return null;
     }
 
     @Override
-    public void depthSearch(T start) {
+    public void depthSearch(Integer start) {
 
     }
 
     @Override
-    public void breathSearch(T start) {
+    public void breathSearch(Integer start) {
 
     }
 

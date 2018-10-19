@@ -30,7 +30,7 @@ public class AlgorithmMain {
                         algorithm = resource.getAlgorithm(input);
                     } catch (InvalidInputException e) {
                         System.out.println();
-                        System.out.println("-- SortInput is invalid. Please enter a valid algorithm number. --");
+                        System.out.println("-- input is invalid. Please enter a valid algorithm number. --");
                         System.out.println();
                         printIntro();
                         continue;

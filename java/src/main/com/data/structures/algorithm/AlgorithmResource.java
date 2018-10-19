@@ -39,6 +39,10 @@ public class AlgorithmResource {
                 return algorithmFactory.getAlgorithm("tree");
             }
 
+            case "8": {
+                return algorithmFactory.getAlgorithm("graph");
+            }
+
             default: {
                 throw new InvalidInputException("Invalid input");
             }

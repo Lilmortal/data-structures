@@ -8,11 +8,11 @@ import com.data.structures.heap.MinHeap;
 public class GraphFactory {
     public Graph getGraph(String graph) throws InvalidInputException {
         switch (graph) {
-            case "minHeap": {
+            case "adjacencyList": {
                 return null;
             }
-            case "maxHeap": {
-                return null;
+            case "adjacencyMatrix": {
+                return new AdjacencyMatrixGraph();
             }
             default:
                 throw new InvalidInputException("Invalid input");

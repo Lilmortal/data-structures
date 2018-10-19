@@ -1,6 +1,9 @@
 package com.data.structures.algorithm;
 
 import com.data.structures.InvalidInputException;
+import com.data.structures.graph.GraphFactory;
+import com.data.structures.graph.GraphIntroAlgorithm;
+import com.data.structures.graph.GraphResource;
 import com.data.structures.hashTable.HashTableAlgorithm;
 import com.data.structures.heap.HeapFactory;
 import com.data.structures.heap.HeapIntroAlgorithm;
@@ -45,10 +48,17 @@ public class AlgorithmFactory {
                 HeapResource heapResource = new HeapResource(heapFactory);
                 return new HeapIntroAlgorithm(heapResource);
             }
+
             case "tree": {
                 TreeFactory treeFactory = new TreeFactory();
                 TreeResource treeResource = new TreeResource(treeFactory);
                 return new TreeIntroAlgorithm(treeResource);
+            }
+
+            case "graph": {
+                GraphFactory graphFactory = new GraphFactory();
+                GraphResource graphResource = new GraphResource(graphFactory);
+                return new GraphIntroAlgorithm(graphResource);
             }
 
             default: {

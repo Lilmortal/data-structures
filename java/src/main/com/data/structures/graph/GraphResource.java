@@ -13,10 +13,10 @@ public class GraphResource {
     public Graph getGraph(String graph) throws InvalidInputException {
         switch (graph) {
             case "1": {
-                return graphFactory.getGraph("minHeap");
+                return graphFactory.getGraph("adjacencyList");
             }
             case "2": {
-                return graphFactory.getGraph("maxHeap");
+                return graphFactory.getGraph("adjacencyMatrix");
             }
             default: {
                 throw new InvalidInputException("Invalid input");

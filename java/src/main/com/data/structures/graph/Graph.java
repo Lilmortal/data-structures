@@ -2,24 +2,24 @@ package com.data.structures.graph;
 
 import java.util.Collection;
 
-public interface Graph<T> {
-    boolean contains(T item);
+public interface Graph<Integer> {
+    boolean contains(Integer item);
 
-    void addVertex(T vertex);
+    void addVertex(Integer vertex);
 
-    boolean areAdjacent(T a, T b);
+    boolean areAdjacent(Integer a, Integer b);
 
-    void removeVertex(T vertex);
+    void removeVertex(Integer vertex);
 
-    void addEdge(T from, T to, int weight);
+    void addEdge(Integer from, Integer to, Integer weight);
 
-    void removeEdge(T from, T to);
+    void removeEdge(Integer from, Integer to);
 
-    Collection<T> getNeighboursForT(T vertex);
+    Collection<Integer> getNeighboursForT(Integer vertex);
 
-    void depthSearch(T start);
+    void depthSearch(Integer start);
 
-    void breathSearch(T start);
+    void breathSearch(Integer start);
     
     String getName();
 }

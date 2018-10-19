@@ -16,8 +16,8 @@ public class GraphIntroAlgorithm extends Algorithm {
     @Override
     protected void printInstructions() {
         System.out.println("Which graph algorithm you want to test, type the number:");
-        System.out.println("1. Undirected graph");
-        System.out.println("2. Directed graph");
+        System.out.println("1. Adjacency List graph");
+        System.out.println("2. Adjacency Matrix graph");
         System.out.println("3. Acyclic graph");
         System.out.println("4. Topological sorting");
         System.out.println("5. DAG");
