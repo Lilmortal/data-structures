@@ -55,6 +55,9 @@ public class AdjacencyListsGraph implements Graph<Integer> {
 
     @Override
     public void depthFirstSearch(Integer start) {
+        List<Integer> visitedVertices = new ArrayList<>();
+
+        depthFirstSearch(start, visitedVertices);
     }
 
     @Override
@@ -68,29 +71,25 @@ public class AdjacencyListsGraph implements Graph<Integer> {
 
         queue.add(start);
 
-        try {
-            while (!queue.isEmpty()) {
-                Integer vertex = queue.remove();
-                System.out.println(vertex);
+        while (!queue.isEmpty()) {
+            Integer vertex = queue.remove();
+            System.out.println(vertex);
 
-                if (linkedList[vertex] != null) {
-                    LinkedListNode currentNode = linkedList[vertex].getFirstNode();
+            if (linkedList[vertex] != null) {
+                LinkedListNode currentNode = linkedList[vertex].getFirstNode();
+                if (!visitedVertices.contains(currentNode.getValue())) {
+                    queue.add((Integer) currentNode.getValue());
+                    visitedVertices.add((Integer) currentNode.getValue());
+                }
+
+                while (currentNode.hasNext()) {
+                    currentNode = currentNode.getNext();
                     if (!visitedVertices.contains(currentNode.getValue())) {
                         queue.add((Integer) currentNode.getValue());
                         visitedVertices.add((Integer) currentNode.getValue());
                     }
-
-                    while (currentNode.hasNext()) {
-                        currentNode = currentNode.getNext();
-                        if (!visitedVertices.contains(currentNode.getValue())) {
-                            queue.add((Integer) currentNode.getValue());
-                            visitedVertices.add((Integer) currentNode.getValue());
-                        }
-                    }
                 }
             }
-        } catch (NullPointerException e) {
-            System.out.println(e);
         }
     }
 
@@ -126,6 +125,27 @@ public class AdjacencyListsGraph implements Graph<Integer> {
         this.linkedList = new LinkedListImpl[vertex];
         for (int i = 0; i < temp.length; i++) {
             this.linkedList[i] = temp[i];
+        }
+    }
+
+    private void depthFirstSearch(Integer start, List<Integer> visitedVertices) {
+        // TODO: Visited vertices stopping this
+        if (linkedList[start] == null || visitedVertices.contains(start)) {
+            return;
+        }
+
+        LinkedListNode currentNode = linkedList[start].getFirstNode();
+        Integer currentValue = (Integer) currentNode.getValue();
+        System.out.println(currentValue);
+        depthFirstSearch(currentValue, visitedVertices);
+        visitedVertices.add(currentValue);
+
+        if (currentNode.hasNext()) {
+            currentNode = currentNode.getNext();
+            currentValue = (Integer) currentNode.getValue();
+            System.out.println(currentValue);
+            depthFirstSearch(currentValue, visitedVertices);
+            visitedVertices.add(currentValue);
         }
     }
 }
