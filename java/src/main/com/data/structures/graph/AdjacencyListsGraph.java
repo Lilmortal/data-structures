@@ -1,6 +1,9 @@
 package com.data.structures.graph;
 
+import com.data.structures.queue.Queue;
+
 import java.util.Collection;
+import java.util.List;
 
 public class AdjacencyListsGraph implements Graph<Integer> {
     @Override
@@ -39,13 +42,13 @@ public class AdjacencyListsGraph implements Graph<Integer> {
     }
 
     @Override
-    public void depthSearch(Integer start) {
-
+    public Queue<Integer> depthFirstSearch(Integer start) {
+        return null;
     }
 
     @Override
-    public void breathSearch(Integer start) {
-
+    public Queue<Integer> breadthFirstSearch(Integer start) {
+        return null;
     }
 
     @Override

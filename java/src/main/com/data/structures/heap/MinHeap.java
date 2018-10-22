@@ -5,7 +5,7 @@ import java.util.Objects;
 public class MinHeap extends BaseHeap {
     @Override
     public String getName() {
-        return "Min BaseHeap";
+        return "Min heap";
     }
 
     @Override

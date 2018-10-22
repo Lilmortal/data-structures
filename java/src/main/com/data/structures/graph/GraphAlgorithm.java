@@ -3,6 +3,7 @@ package com.data.structures.graph;
 import com.data.structures.InvalidInputException;
 import com.data.structures.algorithm.Algorithm;
 import com.data.structures.heap.Heap;
+import com.data.structures.queue.Queue;
 
 import java.io.BufferedReader;
 
@@ -15,7 +16,9 @@ public class GraphAlgorithm extends Algorithm {
 
     private static final Character SPACE = ' ';
 
-    private Graph graph;
+    private static final String BFS = "b";
+
+    private Graph<Integer> graph;
 
     public GraphAlgorithm(Graph graph) {
         this.graph = graph;
@@ -24,8 +27,9 @@ public class GraphAlgorithm extends Algorithm {
     @Override
     protected void printInstructions() {
         System.out.println("Press 'a' followed by a number to add a vertex to the graph. e.g. (a20)");
-        System.out.println("Press 'j' followed by a number and a space another number to add an edge. e.g. (j10 20)");
+        System.out.println("Press 'j' followed by 3 numbers with a space in between to add an edge between the first two vertices and a weight. e.g. (j10 20 5)");
         System.out.println("Press 'r' followed by a number to remove the vertex from the graph. e.g. (r20)");
+        System.out.println("Press 'b' followed by a number to see a list of vertices retrieved from breadth first search for that vertex.");
     }
 
     @Override
@@ -45,12 +49,31 @@ public class GraphAlgorithm extends Algorithm {
             }
         } else if (String.valueOf(input.charAt(0)).equals(JOIN)) {
             if (input.indexOf(SPACE) == -1) {
-                throw new InvalidInputException("Please enter a space");
+                throw new InvalidInputException("Please enter the second vertex");
             }
             try {
-                Integer firstVertex = Integer.parseInt(userInput.substring(0, userInput.indexOf(SPACE)));
-                Integer secondVertex = Integer.parseInt(userInput.substring(userInput.indexOf(SPACE) + 1));
-                this.graph.addEdge(firstVertex, secondVertex, 5);
+                int firstSpacePos = userInput.indexOf(SPACE);
+                String firstVertex = userInput.substring(0, firstSpacePos);
+                if (firstVertex.isEmpty()) {
+                    throw new InvalidInputException("Please enter the first vertex");
+                }
+
+                int secondSpacePos = userInput.indexOf(SPACE, firstSpacePos + 1);
+                String secondVertex = userInput.substring(firstSpacePos + 1, secondSpacePos == -1 ? userInput.length() : secondSpacePos);
+                if (secondVertex.isEmpty()) {
+                    throw new InvalidInputException("Please enter the second vertex");
+                }
+
+                if (secondSpacePos == -1) {
+                    throw new InvalidInputException("Please enter the second space");
+                }
+
+                String weight = userInput.substring(secondSpacePos + 1);
+                if (weight.isEmpty()) {
+                    throw new InvalidInputException("Please enter a weight");
+                }
+
+                this.graph.addEdge(Integer.parseInt(firstVertex), Integer.parseInt(secondVertex), Integer.parseInt(weight));
             } catch (NumberFormatException e) {
                 throw new InvalidInputException("Please enter numbers only");
             }
@@ -58,6 +81,16 @@ public class GraphAlgorithm extends Algorithm {
             try {
                 Integer vertex = Integer.parseInt(userInput);
                 this.graph.removeVertex(vertex);
+            } catch (NumberFormatException e) {
+                throw new InvalidInputException("Please enter numbers");
+            }
+        } else if (String.valueOf(input.charAt(0)).equals(BFS)) {
+            try {
+                Integer vertex = Integer.parseInt(userInput);
+                Queue<Integer> queue = this.graph.breadthFirstSearch(vertex);
+                while(!queue.isEmpty()) {
+                    System.out.println(queue.remove());
+                }
             } catch (NumberFormatException e) {
                 throw new InvalidInputException("Please enter numbers");
             }

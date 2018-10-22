@@ -1,6 +1,11 @@
 package com.data.structures.graph;
 
+import com.data.structures.InvalidInputException;
+import com.data.structures.queue.Queue;
+import com.data.structures.queue.QueueImpl;
+
 import java.util.Collection;
+import java.util.List;
 
 public class AdjacencyMatrixGraph implements Graph<Integer> {
     private int capacity = 10;
@@ -42,6 +47,10 @@ public class AdjacencyMatrixGraph implements Graph<Integer> {
 
     @Override
     public void addEdge(Integer from, Integer to, Integer weight) {
+        if (from >= capacity || to >= capacity) {
+            addVertex(from > to ? from : to);
+        }
+
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
                 if (i == from && j == to) {
@@ -70,13 +79,16 @@ public class AdjacencyMatrixGraph implements Graph<Integer> {
     }
 
     @Override
-    public void depthSearch(Integer start) {
-
+    public Queue<Integer> depthFirstSearch(Integer start) {
+        return null;
     }
 
     @Override
-    public void breathSearch(Integer start) {
+    public Queue<Integer> breadthFirstSearch(Integer start) throws InvalidInputException {
+        Queue<Integer> queue = new QueueImpl<>(matrix.length * matrix[0].length);
+        queue.add(start);
 
+        return getListOfVerticesViaBFS(start, queue);
     }
 
     @Override
@@ -105,5 +117,16 @@ public class AdjacencyMatrixGraph implements Graph<Integer> {
                 matrix[i][j] = tempMatrix[i][j];
             }
         }
+    }
+
+    private Queue<Integer> getListOfVerticesViaBFS(Integer start, Queue<Integer> queue) throws InvalidInputException {
+        for (int i = 0; i < matrix[start].length; i++) {
+            if (matrix[start][i] > 0 && queue.peek(i) != null) {
+                queue.add(i);
+                getListOfVerticesViaBFS(i, queue);
+            }
+        }
+
+        return queue;
     }
 }

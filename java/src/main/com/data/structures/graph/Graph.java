@@ -1,6 +1,10 @@
 package com.data.structures.graph;
 
+import com.data.structures.InvalidInputException;
+import com.data.structures.queue.Queue;
+
 import java.util.Collection;
+import java.util.List;
 
 public interface Graph<Integer> {
     boolean contains(Integer item);
@@ -17,9 +21,9 @@ public interface Graph<Integer> {
 
     Collection<Integer> getNeighboursForT(Integer vertex);
 
-    void depthSearch(Integer start);
+    Queue<Integer> depthFirstSearch(Integer start);
 
-    void breathSearch(Integer start);
+    Queue<Integer> breadthFirstSearch(Integer start) throws InvalidInputException;
     
     String getName();
 }

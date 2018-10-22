@@ -13,8 +13,8 @@ public class QueueImpl<T> implements Queue<T> {
     private T[] queue;
     private StringBuilder queueUi;
 
-    public QueueImpl() {
-        maxSize = 5;
+    public QueueImpl(int maxSize) {
+        this.maxSize = maxSize;
         head = -1;
         tail = -1;
         currentSize = 0;

@@ -5,7 +5,7 @@ import java.util.Objects;
 public class MaxHeap extends BaseHeap {
     @Override
     public String getName() {
-        return "Max BaseHeap";
+        return "Max heap";
     }
 
     @Override
