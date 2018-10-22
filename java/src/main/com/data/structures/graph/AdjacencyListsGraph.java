@@ -57,6 +57,7 @@ public class AdjacencyListsGraph implements Graph<Integer> {
     public void depthFirstSearch(Integer start) {
         List<Integer> visitedVertices = new ArrayList<>();
 
+        System.out.println("Start with " + start);
         depthFirstSearch(start, visitedVertices);
     }
 
@@ -128,24 +129,28 @@ public class AdjacencyListsGraph implements Graph<Integer> {
         }
     }
 
-    private void depthFirstSearch(Integer start, List<Integer> visitedVertices) {
-        // TODO: Visited vertices stopping this
-        if (linkedList[start] == null || visitedVertices.contains(start)) {
-            return;
+    private List<Integer> depthFirstSearch(Integer start, List<Integer> visitedVertices) {
+        if (visitedVertices.contains(start)) {
+            return visitedVertices;
+        }
+
+        System.out.println(start);
+        visitedVertices.add(start);
+
+        if (linkedList[start] == null) {
+            return visitedVertices;
         }
 
         LinkedListNode currentNode = linkedList[start].getFirstNode();
         Integer currentValue = (Integer) currentNode.getValue();
-        System.out.println(currentValue);
-        depthFirstSearch(currentValue, visitedVertices);
-        visitedVertices.add(currentValue);
+        visitedVertices = depthFirstSearch(currentValue, visitedVertices);
 
-        if (currentNode.hasNext()) {
+        while (currentNode.hasNext()) {
             currentNode = currentNode.getNext();
             currentValue = (Integer) currentNode.getValue();
-            System.out.println(currentValue);
-            depthFirstSearch(currentValue, visitedVertices);
-            visitedVertices.add(currentValue);
+            visitedVertices = depthFirstSearch(currentValue, visitedVertices);
         }
+
+        return visitedVertices;
     }
 }
