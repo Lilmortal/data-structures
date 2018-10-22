@@ -11,15 +11,11 @@ public interface Graph<Integer> {
 
     void addVertex(Integer vertex);
 
-    boolean areAdjacent(Integer a, Integer b);
-
     void removeVertex(Integer vertex);
 
     void addEdge(Integer from, Integer to, Integer weight);
 
     void removeEdge(Integer from, Integer to);
-
-    Collection<Integer> getNeighboursForT(Integer vertex);
 
     void depthFirstSearch(Integer start);
 

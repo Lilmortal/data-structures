@@ -136,6 +136,9 @@ public class LinkedListImpl<T extends Object> implements LinkedList<T> {
         LinkedListNode currentLinkedListNode = this.head;
         for (int i = 0; i < pos; i++) {
             currentLinkedListNode = currentLinkedListNode.getNext();
+            if (Objects.isNull(currentLinkedListNode)) {
+                return null;
+            }
         }
         return (T) currentLinkedListNode.getValue();
     }

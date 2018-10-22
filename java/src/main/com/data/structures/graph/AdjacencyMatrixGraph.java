@@ -28,14 +28,6 @@ public class AdjacencyMatrixGraph implements Graph<Integer> {
     }
 
     @Override
-    public boolean areAdjacent(Integer a, Integer b) {
-        if (matrix[a][b] > 0 || matrix[b][a] > 0) {
-            return true;
-        }
-        return false;
-    }
-
-    @Override
     public void removeVertex(Integer vertex) {
         for (int i = 0; i < matrix.length; i++) {
             for (int j = 0; j < matrix.length; j++) {
@@ -72,11 +64,6 @@ public class AdjacencyMatrixGraph implements Graph<Integer> {
                 }
             }
         }
-    }
-
-    @Override
-    public Collection<Integer> getNeighboursForT(Integer vertex) {
-        return null;
     }
 
     @Override

@@ -9,7 +9,7 @@ public class GraphFactory {
     public Graph getGraph(String graph) throws InvalidInputException {
         switch (graph) {
             case "adjacencyList": {
-                return null;
+                return new AdjacencyListsGraph();
             }
             case "adjacencyMatrix": {
                 return new AdjacencyMatrixGraph();
