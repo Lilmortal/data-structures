@@ -4,6 +4,7 @@ import com.data.structures.InvalidInputException;
 import com.data.structures.queue.Queue;
 import com.data.structures.queue.QueueImpl;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -79,16 +80,30 @@ public class AdjacencyMatrixGraph implements Graph<Integer> {
     }
 
     @Override
-    public Queue<Integer> depthFirstSearch(Integer start) {
-        return null;
+    public void depthFirstSearch(Integer start) {
+        List<Integer> visitedVertices = new ArrayList<>();
+
+        depthFirstSearch(start, visitedVertices);
     }
 
     @Override
-    public Queue<Integer> breadthFirstSearch(Integer start) throws InvalidInputException {
+    public void breadthFirstSearch(Integer start) throws InvalidInputException {
         Queue<Integer> queue = new QueueImpl<>(matrix.length * matrix[0].length);
-        queue.add(start);
+        List<Integer> visitedVertices = new ArrayList<>();
 
-        return getListOfVerticesViaBFS(start, queue);
+        queue.add(start);
+        visitedVertices.add(start);
+
+        while (!queue.isEmpty()) {
+            Integer vertex = queue.remove();
+            System.out.println(vertex);
+            for (int i = 0; i < matrix[vertex].length; i++) {
+                if (matrix[vertex][i] > 0 && !visitedVertices.contains(i)) {
+                    queue.add(i);
+                    visitedVertices.add(i);
+                }
+            }
+        }
     }
 
     @Override
@@ -119,14 +134,13 @@ public class AdjacencyMatrixGraph implements Graph<Integer> {
         }
     }
 
-    private Queue<Integer> getListOfVerticesViaBFS(Integer start, Queue<Integer> queue) throws InvalidInputException {
+    private void depthFirstSearch(Integer start, List<Integer> visitedVertices) {
+        System.out.println(start);
         for (int i = 0; i < matrix[start].length; i++) {
-            if (matrix[start][i] > 0 && queue.peek(i) != null) {
-                queue.add(i);
-                getListOfVerticesViaBFS(i, queue);
+            if (matrix[start][i] > 0 && !visitedVertices.contains(i)) {
+                visitedVertices.add(i);
+                depthFirstSearch(i, visitedVertices);
             }
         }
-
-        return queue;
     }
 }

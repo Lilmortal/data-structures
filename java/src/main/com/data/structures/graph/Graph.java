@@ -21,9 +21,9 @@ public interface Graph<Integer> {
 
     Collection<Integer> getNeighboursForT(Integer vertex);
 
-    Queue<Integer> depthFirstSearch(Integer start);
+    void depthFirstSearch(Integer start);
 
-    Queue<Integer> breadthFirstSearch(Integer start) throws InvalidInputException;
+    void breadthFirstSearch(Integer start) throws InvalidInputException;
     
     String getName();
 }

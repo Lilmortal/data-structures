@@ -18,6 +18,8 @@ public class GraphAlgorithm extends Algorithm {
 
     private static final String BFS = "b";
 
+    private static final String DFS = "d";
+
     private Graph<Integer> graph;
 
     public GraphAlgorithm(Graph graph) {
@@ -30,6 +32,7 @@ public class GraphAlgorithm extends Algorithm {
         System.out.println("Press 'j' followed by 3 numbers with a space in between to add an edge between the first two vertices and a weight. e.g. (j10 20 5)");
         System.out.println("Press 'r' followed by a number to remove the vertex from the graph. e.g. (r20)");
         System.out.println("Press 'b' followed by a number to see a list of vertices retrieved from breadth first search for that vertex.");
+        System.out.println("Press 'd' followed by a number to see a list of vertices retrieved from depth first search for that vertex.");
     }
 
     @Override
@@ -87,10 +90,14 @@ public class GraphAlgorithm extends Algorithm {
         } else if (String.valueOf(input.charAt(0)).equals(BFS)) {
             try {
                 Integer vertex = Integer.parseInt(userInput);
-                Queue<Integer> queue = this.graph.breadthFirstSearch(vertex);
-                while(!queue.isEmpty()) {
-                    System.out.println(queue.remove());
-                }
+                this.graph.breadthFirstSearch(vertex);
+            } catch (NumberFormatException e) {
+                throw new InvalidInputException("Please enter numbers");
+            }
+        } else if (String.valueOf(input.charAt(0)).equals(DFS)) {
+            try {
+                Integer vertex = Integer.parseInt(userInput);
+                this.graph.depthFirstSearch(vertex);
             } catch (NumberFormatException e) {
                 throw new InvalidInputException("Please enter numbers");
             }

@@ -42,13 +42,11 @@ public class AdjacencyListsGraph implements Graph<Integer> {
     }
 
     @Override
-    public Queue<Integer> depthFirstSearch(Integer start) {
-        return null;
+    public void depthFirstSearch(Integer start) {
     }
 
     @Override
-    public Queue<Integer> breadthFirstSearch(Integer start) {
-        return null;
+    public void breadthFirstSearch(Integer start) {
     }
 
     @Override
